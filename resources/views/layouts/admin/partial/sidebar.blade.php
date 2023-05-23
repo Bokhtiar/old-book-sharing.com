@@ -14,7 +14,7 @@
                 <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Category <span
                             class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
-                        <li><a href="{{ url('admin/category/index') }}">All Category</a></li>
+                        <li><a href="@route('admin.category.index')">All Category</a></li>
                         <li><a href="{{ url('admin/category/create') }}">Create Category</a></li>
                     </ul>
                 </li>

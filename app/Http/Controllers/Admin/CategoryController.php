@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Services\Admin\CategoryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -11,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all('id', 'name');
+        $categories = CategoryService::categoryList();
         return view('admin.category.index', compact('categories'));
     }
 
