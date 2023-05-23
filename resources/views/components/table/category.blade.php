@@ -1,30 +1,34 @@
 <table class="table table-striped">
-    <thead>
+  <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+          <th scope="col">Index</th>
+          <th scope="col">Category Name</th>
+          <th scope="col">Action</th>
       </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
+  </thead>
+  <tbody>
+      @forelse ($categories as $item)
+          <tr>
+              <th scope="row">{{ $loop->index }}</th>
+              <td>{{ $item->name }}</td>
+              <td class="d-flex flex-row float-right gap-3">
+                  {{-- edit   --}}
+                  <a class="btn btn-sm btn-success mr-2" href="@route('admin.category.edit', $item->id)"><span
+                          class="material-symbols-outlined">
+                          edit_square
+                      </span></a>
+                  {{-- delete --}}
+                  <form action="@route('admin.category.update', $item->id)" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button class="btn btn-sm btn-danger"><span class="material-symbols-outlined">
+                              delete
+                          </span></button>
+                  </form>
+              </td>
+          </tr>
+      @empty
+          <span class="text-danger">Data not available</span>
+      @endforelse
+  </tbody>
+</table>

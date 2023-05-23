@@ -10,44 +10,63 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+    /* find all resoruce */
     public function index()
     {
-        $categories = CategoryService::categoryList();
-        return view('admin.category.index', compact('categories'));
+        try {
+            $categories = CategoryService::categoryList();
+            return view('admin.category.index', compact('categories'));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
-    public function create()
+    /* store new document */
+    public function store(Request $request)
     {
-        return view('admin.category.createOrUpdate');
+        try {
+            CategoryService::categoryStore($request);
+            $categories = CategoryService::categoryList();
+            return view('admin.category.index', compact('categories'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
-
-    public function store(Request $request){
-        $category = new Category;
-        $category['name'] = $request->name;
-        $category['slug'] = Str::slug($request->name);
-        $category->save();
-        return redirect('admin/category/index');
+    public function show($id)
+    {
+    
     }
-
-    public function update(Request $request ,$id){
-        $category = Category::find($id);
-        $category['name'] = $request->name;
-        $category['slug'] = Str::slug($request->name);
-        $category->save();
-        return redirect('admin/category/index');
-    }
-
-
+    // specific resource show
     public function edit($id)
     {
-        $edit = Category::find($id);
-        return view('admin.category.createOrUpdate', compact('edit'));
+        try {
+            $edit = CategoryService::categoryFindById($id);
+            $categories = CategoryService::categoryList();
+            return view('admin.category.index', compact('categories', 'edit'));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
+    /* specific resoruce updated */
+    public function update(Request $request, $id)
+    {
+        try {
+            CategoryService::categoryFindByUpdate($id, $request);
+            return redirect()->route('admin.category.index');
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     public function destroy($id)
     {
-        Category::find($id)->delete();
-        return redirect('admin/category/index');
+        try {
+            CategoryService::categoryFindById($id)->delete();
+            return redirect()->route('admin.category.index');
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 }
