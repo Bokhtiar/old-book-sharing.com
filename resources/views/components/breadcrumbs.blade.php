@@ -1,3 +1,3 @@
-<div>
-    <!-- Let all your things have their places; let each part of your business have its time. - Benjamin Franklin -->
+<div class="shadow p-3 my-3 bg-white rounded">
+    {{ $name }}
 </div>

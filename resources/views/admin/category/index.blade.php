@@ -1,5 +1,9 @@
 @extends('layouts.admin.app')
 @section('admin_container')
+    @component('components.breadcrumbs', [
+        'name' => 'All Categories',
+    ])
+    @endcomponent
     <section class="row">
         {{-- table --}}
         <div class="col-12 col-sm-12 col-md-8 col-lg-8">
