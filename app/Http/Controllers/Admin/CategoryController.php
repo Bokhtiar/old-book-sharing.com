@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
-use App\Models\Category;
 use App\Services\Admin\CategoryService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -18,7 +16,7 @@ class CategoryController extends Controller
             $categories = CategoryService::categoryList();
             return view('admin.category.index', compact('categories'));
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
     }
 
@@ -34,10 +32,9 @@ class CategoryController extends Controller
         }
     }
 
-    public function show($id)
-    {
-    }
-    // specific resource show
+    public function show($id){}
+
+    /* specific resource show */
     public function edit($id)
     {
         try {
@@ -45,7 +42,7 @@ class CategoryController extends Controller
             $categories = CategoryService::categoryList();
             return view('admin.category.index', compact('categories', 'edit'));
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
     }
 
@@ -56,17 +53,18 @@ class CategoryController extends Controller
             CategoryService::categoryFindByUpdate($id, $request);
             return redirect()->route('admin.category.index');
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
     }
 
+    /* specific resource delete */
     public function destroy($id)
     {
         try {
             CategoryService::categoryFindById($id)->delete();
             return redirect()->route('admin.category.index');
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
     }
 }
