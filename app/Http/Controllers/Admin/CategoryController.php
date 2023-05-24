@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Services\Admin\CategoryService;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class CategoryController extends Controller
     }
 
     /* store new document */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         try {
             CategoryService::categoryStore($request);
@@ -35,7 +36,6 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-    
     }
     // specific resource show
     public function edit($id)
@@ -50,7 +50,7 @@ class CategoryController extends Controller
     }
 
     /* specific resoruce updated */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         try {
             CategoryService::categoryFindByUpdate($id, $request);
