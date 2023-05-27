@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Location;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\BookRequest;
+use App\Services\Admin\BookService;
 
 class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::where('role_id', 1)->get(['id', 'title', 'ISBN', 'image', 'author', 'user_id', 'status']);
+        $books = BookService::findAll();
         return view('admin.book.index', compact('books'));
     }
 
@@ -33,10 +35,7 @@ class BookController extends Controller
         $book['location_id'] = $request->location_id;
         $book['title'] = $request->title;
         $book['author'] = $request->author;
-
         $book['user_id'] = Auth::id();
-
-
         $book['role_id'] = Auth::user()->role_id;
         $book['description'] = $request->description;
         $book['price'] = $request->price;
