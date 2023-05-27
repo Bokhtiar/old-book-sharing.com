@@ -20,7 +20,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="{{ url('admin/location/index') }}"><i class="ti-calendar"></i> Locations </a></li>
+                <li><a href="@route('admin.location.index')"><i class="ti-calendar"></i> Locations </a></li>
                 <li><a href="{{ url('admin/book/index') }}"><i class="ti-email"></i> Books</a></li>
                 <li><a href="{{ url('admin/book/user-post') }}"><i class="ti-user"></i> User Pending Post</a></li>
                 <li><a href="{{ url('admin/order/orders') }}"><i class="ti-layout-grid2-alt"></i> Order List</a></li>

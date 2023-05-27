@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+ 
 use App\Http\Controllers\Controller;
 use App\Models\Location;
 use Illuminate\Http\Request;
@@ -13,11 +13,6 @@ class LocationController extends Controller
     {
         $locations = Location::all('id', 'name');
         return view('admin.location.index', compact('locations'));
-    }
-
-    public function create()
-    {
-        return view('admin.location.createOrUpdate');
     }
 
     public function store(Request $request)

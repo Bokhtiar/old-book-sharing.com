@@ -1,24 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LocationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
-
+Auth::routes();
 
 Route::get('/', [App\Http\Controllers\User\UserDashboardController::class, 'homePage']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/about', [App\Http\Controllers\User\UserDashboardController::class, 'about']);
 Route::get('/contact-us', [App\Http\Controllers\User\BooksController::class, 'contact']);
 Route::get('/book', [App\Http\Controllers\User\BooksController::class, 'books']);
@@ -27,9 +17,6 @@ Route::get('location/{id}', [App\Http\Controllers\User\LocationController::class
 Route::get('category/{id}', [App\Http\Controllers\User\CategoryController::class, 'index']);
 Route::post('message', [App\Http\Controllers\User\MessageController::class, 'store']);
 Route::post('search', [App\Http\Controllers\User\UserDashboardController::class, 'search']);
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group([ "as"=>'user.' , "prefix"=>'user' , "namespace"=>'User' , "middleware"=>['auth','user']],function(){
     Route::get('/dashboard', [App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('dashboard');
@@ -52,31 +39,14 @@ Route::group([ "as"=>'user.' , "prefix"=>'user' , "namespace"=>'User' , "middlew
 
 });
 
-
-
-
-
-
-
+/* ADMIN */
 Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "middleware"=>['auth','admin']],function(){
     Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
-    //category
-    // Route::get('category/index', [App\Http\Controllers\Admin\CategoryController::class, 'index']);
-    // Route::get('category/create', [App\Http\Controllers\Admin\CategoryController::class, 'create']);
-    // Route::post('category/store', [App\Http\Controllers\Admin\CategoryController::class, 'store']);
-    // Route::post('category/store/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
-    // Route::get('category/edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit']);
-    // Route::get('category/delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
-
+    /* category */
     Route::resource('/category', CategoryController::class);
 
-    //location
-    Route::get('location/index', [App\Http\Controllers\Admin\LocationController::class, 'index']);
-    Route::get('location/create', [App\Http\Controllers\Admin\LocationController::class, 'create']);
-    Route::post('location/store', [App\Http\Controllers\Admin\LocationController::class, 'store']);
-    Route::post('location/store/{id}', [App\Http\Controllers\Admin\LocationController::class, 'update']);
-    Route::get('location/edit/{id}', [App\Http\Controllers\Admin\LocationController::class, 'edit']);
-    Route::get('location/delete/{id}', [App\Http\Controllers\Admin\LocationController::class, 'destroy']);
+    /* location */
+    Route::resource('/location', LocationController::class);
 
     //book
     Route::get('book/index', [App\Http\Controllers\Admin\BookController::class, 'index']);
