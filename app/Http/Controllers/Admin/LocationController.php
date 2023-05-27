@@ -2,48 +2,68 @@
 
 namespace App\Http\Controllers\Admin;
  
-use App\Http\Controllers\Controller;
 use App\Models\Location;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Admin\LocationService;
+use App\Http\Requests\locationRequest;
 
 class LocationController extends Controller
 {
+    /* find all resource */
     public function index()
     {
-        $locations = Location::all('id', 'name');
-        return view('admin.location.index', compact('locations'));
+        try {
+            $locations = LocationService::findAll();
+            return view('admin.location.index', compact('locations'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
-    public function store(Request $request)
+    /* store new resoruce */
+    public function store(locationRequest $request)
     {
-        $location = new Location;
-        $location['name'] = $request->name;
-        $location['slug'] = Str::slug($request->name);
-        $location->save();
-        return redirect('admin/location/index');
+        try {
+            LocationService::store($request);
+            return redirect()->route('admin.location.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
-    public function update($id, Request $request)
-    {
-
-        $location = Location::find($id);
-        $location['name'] = $request->name;
-        $location['slug'] = Str::slug($request->name);
-        $location->save();
-        return redirect('admin/location/index');
-    }
-
-
+    /* reosurce edit */
     public function edit($id)
     {
-        $edit = Location::find($id);
-        return view('admin.location.createOrUpdate', compact('edit'));
+        try {
+            $edit = LocationService::findById($id);
+            $locations = LocationService::findAll();
+            return view('admin.location.index', compact('locations', 'edit'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    
+    /* specific resoruce update */
+    public function update($id, locationRequest $request)
+    {
+        try {
+            LocationService::update($id, $request);
+            return redirect()->route('admin.location.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
+    /* specific resource destory */
     public function destroy($id)
     {
-        Location::find($id)->delete();
-        return redirect('admin/location/index');
+        try {
+            LocationService::findById($id)->delete();
+            return redirect()->route('admin.location.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
