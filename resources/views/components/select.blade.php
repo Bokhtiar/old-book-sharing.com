@@ -1,10 +1,10 @@
-<div class="my-2 form-group{{ $errors->has($name) ? ' has-error' : '' }}">
+<div class=" form-group{{ $errors->has($name) ? ' has-error' : '' }}">
     @if (isset($label))
         <label for="{{ $label }}" class="control-label">{{ $label }} {{ @$required == true ? '*' : '' }}</label> 
     @endif
 
     <div class="col-md-12">
-        <select name="{{ $name }}" id={{ @$id ? $id : '' }} class="form-control p-4 py-3">
+        <select name="{{ $name }}" id={{ @$id ? $id : '' }} class="form-control py-4">
             <option value="">{{ $label }}</option>
             @foreach ($resource as $item)
                 <option value="{{ $item->$field_id }}" {{ $item->$field_id == @$value ? 'selected' : '' }}>
