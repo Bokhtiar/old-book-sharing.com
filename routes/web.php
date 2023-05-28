@@ -61,10 +61,15 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "middleware"=>['auth','admin
     Route::get('order/detail/{id}', [App\Http\Controllers\Admin\OrderController::class, 'detail']);
     Route::post('order/porduct-quantiy/{id}', [App\Http\Controllers\Admin\OrderController::class, 'quantity']);
     Route::post('order/cart-delete/{id}', [App\Http\Controllers\Admin\OrderController::class, 'delete']);
+
     //message
-    Route::get('message/messages', [App\Http\Controllers\Admin\MessageController::class, 'index']);
+    // Route::get('message/messages', [App\Http\Controllers\Admin\MessageController::class, 'index']);
     Route::get('message/status/{id}', [App\Http\Controllers\Admin\MessageController::class, 'status']);
-    Route::get('message/delete/{id}', [App\Http\Controllers\Admin\MessageController::class, 'delete']);
+    // Route::get('message/delete/{id}', [App\Http\Controllers\Admin\MessageController::class, 'delete']);
+
+    Route::resource('message', 'App\Http\Controllers\Admin\MessageController', [
+        'only' => ['index', 'destroy']
+    ]);
 
     //logout
     Route::get('logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout']);
