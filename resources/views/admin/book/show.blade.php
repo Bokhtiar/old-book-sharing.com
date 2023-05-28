@@ -20,8 +20,8 @@
                         <div>
                             <h3>Details Information</h3>
                             <p>Book ISBN : {{ $show->ISBN }}</p> <br>
-                            <p>Book Category : {{ $show->category->name }}</p> <br>
-                            <p>Book Location : {{ $show->location->name }}</p> <br>
+                            <p>Book Category : {{ $show->category ? $show->category->name : "Data not found" }}</p> <br>
+                            <p>Book Location : {{ $show->location ? $show->location->name : "Data not found" }}</p> <br>
                             <p>Book Author : {{ $show->author }}</p> <br>
                             <p>Book Price : {{ $show->price }}</p> <br>
                             <p>Book Description : {{ $show->description }}</p> <br>

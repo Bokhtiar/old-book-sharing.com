@@ -51,11 +51,8 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "middleware"=>['auth','admin
     
     /* book */
     Route::resource('/book', BookController::class);
-
-    
     Route::get('/book/status/{id}', [App\Http\Controllers\Admin\BookController::class, 'status']);
     Route::get('/user-post', [App\Http\Controllers\Admin\BookController::class, 'pending'])->name('user-post');
-    Route::get('book/delete/{id}', [App\Http\Controllers\Admin\BookController::class, 'destroy']);
 
     //order
     Route::get('order/orders', [App\Http\Controllers\Admin\OrderController::class, 'index']);

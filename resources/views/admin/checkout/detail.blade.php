@@ -2,7 +2,7 @@
 @section('admin_container')
 
 
-<section class="container">
+<section class="">
     <div class="row">
         <div class="col-md-4">
             <h4>Order Info</h4>
@@ -61,8 +61,8 @@
     <h3 class="text-center">Product Details</h3>
 <hr>
 <div class="scrapcar-main-section">
-    <div class="container">
-<table class="table container" >
+    <div class="">
+<table class="table " >
 <thead>
   <tr>
     <th scope="col">Sl</th>
@@ -81,7 +81,7 @@
         <tr>
             <th scope="row">{{$loop->index + 1}}</th>
             <td>{{$cart->book->title}}</td>
-            <td>{{$cart->book->price*$cart->quantity}}</td>
+            <td>{{$cart->book->price}}</td>
             <?php
             $total_amount +=$cart->book->price*$cart->quantity;
             ?>
@@ -96,7 +96,7 @@
                 </form>
             </td>
             <td>
-                <a class="btn btn-sm btn-info" style="" href="{{ url('book/detail',$cart->book->id) }}">View</a>
+                <a class="btn btn-sm btn-info" style="" href="@route('admin.book.show', $cart->book->id)">View</a>
                 <a class="btn btn-sm btn-danger" style="" href="{{url('admin/order/cart-delete',$cart->id)}}">Delete</a>
             </td>
         </tr>
