@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Checkout;
+use App\Services\Admin\OrderService;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     public function index()
     {
-        $checkouts = Checkout::all();
+        $checkouts = OrderService::findAll();
         return view('admin.checkout.index', compact('checkouts'));
     }
 
