@@ -11,15 +11,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\BookRequest;
 use App\Services\Admin\BookService;
+use App\Services\Admin\CategoryService;
+use App\Services\Admin\LocationService;
 
 class BookController extends Controller
 {
+    /* resoruce list */
     public function index()
     {
         $books = BookService::findAll();
         return view('admin.book.index', compact('books'));
     }
 
+    /* create new resoruce form */
     public function create()
     {
         $categories = Category::all();
@@ -27,86 +31,38 @@ class BookController extends Controller
         return view('admin.book.createOrUpdate', compact('categories', 'locations'));
     }
 
-    public function store(Request $request)
+    /* create new resoruce store */
+    public function store(BookRequest $request)
     {
-        $book = new Book;
-        $book['ISBN'] = $request->ISBN;
-        $book['category_id'] = $request->category_id;
-        $book['location_id'] = $request->location_id;
-        $book['title'] = $request->title;
-        $book['author'] = $request->author;
-        $book['user_id'] = Auth::id();
-        $book['role_id'] = Auth::user()->role_id;
-        $book['description'] = $request->description;
-        $book['price'] = $request->price;
-
-        if ($request->image) {
-
-            $image = $request->file('image');
-            if ($image) {
-                $image_name = Str::random(20);
-                $ext = strtolower($image->getClientOriginalExtension());
-                $image_full_name = $image_name . '.' . $ext;
-                $upload_path = 'image/';
-                $image_url = $upload_path . $image_full_name;
-                $success = $image->move($upload_path, $image_full_name);
-                if ($success) {
-                    $book['image'] = $image_url;
-                }
-            }
-        } else {
-            $book['image'] = $book->image;
+        try {
+            BookService::store($request);
+            return redirect()->route('admin.book.index');
+        } catch (\Throwable $th) {
+            throw $th;
         }
-
-        $book->save();
-        return redirect('admin/book/index');
+       
     }
-
-
-    public function update($id = null, Request $request)
-    {
-
-        $book = Book::find($id);
-        $book['ISBN'] = $request->ISBN;
-        $book['category_id'] = $request->category_id;
-        $book['location_id'] = $request->location_id;
-        $book['title'] = $request->title;
-        $book['author'] = $request->author;
-
-        $book['user_id'] = Auth::id();
-
-
-        $book['role_id'] = Auth::user()->role_id;
-        $book['description'] = $request->description;
-        $book['price'] = $request->price;
-
-        if ($request->image) {
-
-            $image = $request->file('image');
-            if ($image) {
-                $image_name = Str::random(20);
-                $ext = strtolower($image->getClientOriginalExtension());
-                $image_full_name = $image_name . '.' . $ext;
-                $upload_path = 'image/';
-                $image_url = $upload_path . $image_full_name;
-                $success = $image->move($upload_path, $image_full_name);
-                if ($success) {
-                    $book['image'] = $image_url;
-                }
-            }
-        }
-        $book->save();
-        return redirect('admin/book/index');
-    }
-
-
+    /* specific resource edit */
     public function edit($id)
     {
-        $categories = Category::all();
-        $locations = Location::all();
-        $edit = Book::find($id);
+        $categories = CategoryService::categoryList();
+        $locations = LocationService::findAll();
+        $edit = BookService::findById($id);
         return view('admin.book.createOrUpdate', compact('edit', 'categories', 'locations'));
     }
+    
+    /* sepecific reosurce update */
+    public function update($id = null, BookRequest $request)
+    {
+        try {
+            BookService::update($id, $request);
+            return redirect()->route('admin.book.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+        
+    }
+
 
     public function show($id)
     {

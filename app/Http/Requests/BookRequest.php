@@ -27,6 +27,8 @@ class BookRequest extends FormRequest
             'title' => 'required',
             'ISBN' => 'required',
             'price' => 'required',
+            'category_id' => 'required',
+            'location_id' => 'required'
         ];
     }
 }

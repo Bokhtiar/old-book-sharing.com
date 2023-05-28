@@ -4,7 +4,7 @@
     @endif
 
     <div class="col-md-12">
-        <select name="{{ $name }}" id={{ @$id ? $id : '' }} class="form-control py-4">
+        <select name="{{ $name }}" id={{ @$id ? $id : '' }} class="form-control ">
             <option value="">{{ $label }}</option>
             @foreach ($resource as $item)
                 <option value="{{ $item->$field_id }}" {{ $item->$field_id == @$value ? 'selected' : '' }}>
@@ -13,7 +13,7 @@
         </select>
 
         @if ($errors->has($name))
-            <span class="help-block">
+            <span class="">
                 <strong>{{ $errors->first($name) }}</strong>
             </span>
         @endif
