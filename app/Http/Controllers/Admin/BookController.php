@@ -105,7 +105,11 @@ class BookController extends Controller
     /* pending book request */
     public function pending()
     {
-        $books = Book::where('role_id', 2)->get(['id', 'title', 'ISBN', 'image', 'author', 'user_id', 'status']);
-        return view('admin.book.user_post', compact('books'));
+        try {
+            $books = Book::where('role_id', 2)->get(['id', 'title', 'ISBN', 'image', 'author', 'user_id', 'status']);
+            return view('admin.book.user_post', compact('books'));            
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

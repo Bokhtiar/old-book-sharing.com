@@ -24,7 +24,7 @@
                 <li><a href="@route('admin.book.index')"><i class="ti-calendar"></i> Books </a></li>
                 <li><a href="@route('admin.book.create')"><i class="ti-calendar"></i> Book create </a></li>
                 
-                <li><a href="{{ url('admin/book/user-post') }}"><i class="ti-user"></i> User Pending Post</a></li>
+                <li><a href="@route('admin.user-post')"><i class="ti-user"></i> User Pending Post</a></li>
                 <li><a href="{{ url('admin/order/orders') }}"><i class="ti-layout-grid2-alt"></i> Order List</a></li>
                 <li><a href="{{ url('admin/message/messages') }}"><i class="ti-user"></i> Message List</a></li>
                 <li><a href="{{ url('admin/logout') }}"><i class="ti-close"></i> Logout</a></li>

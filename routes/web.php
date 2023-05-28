@@ -52,16 +52,9 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "middleware"=>['auth','admin
     /* book */
     Route::resource('/book', BookController::class);
 
-    // Route::get('book/index', [App\Http\Controllers\Admin\BookController::class, 'index']);
-    // Route::get('book/create', [App\Http\Controllers\Admin\BookController::class, 'create']);
-    // Route::post('book/store', [App\Http\Controllers\Admin\BookController::class, 'store']);
-    // Route::post('book/store/{id}', [App\Http\Controllers\Admin\BookController::class, 'update']);
-    // Route::get('book/edit/{id}', [App\Http\Controllers\Admin\BookController::class, 'edit']);
-    // Route::get('book/view/{id}', [App\Http\Controllers\Admin\BookController::class, 'show']);
-
     
-    Route::get('book/status/{id}', [App\Http\Controllers\Admin\BookController::class, 'status']);
-    Route::get('book/user-post', [App\Http\Controllers\Admin\BookController::class, 'pending']);
+    Route::get('/book/status/{id}', [App\Http\Controllers\Admin\BookController::class, 'status']);
+    Route::get('/user-post', [App\Http\Controllers\Admin\BookController::class, 'pending'])->name('user-post');
     Route::get('book/delete/{id}', [App\Http\Controllers\Admin\BookController::class, 'destroy']);
 
     //order
