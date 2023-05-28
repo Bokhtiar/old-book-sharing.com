@@ -31,4 +31,4 @@
             <span class="text-danger">Data not available</span>
         @endforelse
     </tbody>
-  </table>
+</table>

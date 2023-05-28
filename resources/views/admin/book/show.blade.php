@@ -1,8 +1,14 @@
 @extends('layouts.admin.app')
 @section('admin_container')
-    <section class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
+    {{-- book detils information --}}
+    @component('components.breadcrumbs',[
+        'name' => "Book details information"
+    ])
+        
+    @endcomponent
+    <section class="">
+        <div class="row card">
+            <div class="">
                 <h3 class="text-center">Details Informaton Book Of {{ $show->title }}</h3>
 
                 <div class="row my-5 text-center">
@@ -10,7 +16,7 @@
                     <div class="col-md-4 col-sm-12">
                         <h6 class="text-center">Details Informaton Book Of {{ $show->title }}</h6>
                         <div>
-                            <img height="300px" width="100%" src="{{ asset($show->image) }}" alt="">
+                            <img height="400px" width="100%" src="{{ asset($show->image) }}" alt="">
                         </div>
                         <p>{{ $show->title }}</p>
                     </div>

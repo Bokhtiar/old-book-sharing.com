@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Cart;
-use App\Models\Checkout;
-use App\Services\Admin\OrderService;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Admin\OrderService;
+
 
 class OrderController extends Controller
 {

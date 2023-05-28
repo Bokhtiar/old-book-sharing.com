@@ -5,12 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Location;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\BookRequest;
 use App\Services\Admin\BookService;
+use App\Http\Controllers\Controller;
 use App\Services\Admin\CategoryService;
 use App\Services\Admin\LocationService;
 
