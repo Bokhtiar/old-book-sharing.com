@@ -35,12 +35,29 @@
                                 href="{{ url('admin/book/status', $book->id) }}">Inactive</a>
                         @endif
                     </td>
-                    <td>
-                        <a href="@route('admin.book.edit', $book->id)" class="btn btn-sm btn-info">Edit</a>
-                        <a href="{{ url('admin/book/view', $book->id) }}" class="btn btn-sm btn-success">View</a>
-                        <a href="{{ url('admin/book/delete', $book->id) }}" class="btn btn-sm btn-danger">Delete</a>
+
+                    <td class="d-flex flex-row float-right gap-3">
+                        {{-- edit   --}}
+                        <a class="btn btn-sm btn-success mr-2" href="@route('admin.book.edit', $book->id)"><span
+                                class="material-symbols-outlined">
+                                edit_square
+                            </span></a>
+
+                        {{-- view --}}
+                        <a href="@route('admin.book.show', $book->id)" class="btn btn-sm btn-success mr-2"><span class="material-symbols-outlined">
+                            visibility
+                            </span></a>
+                        {{-- delete --}}
+                        <form action="@route('admin.book.destroy', $book->id)" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger"><span class="material-symbols-outlined">
+                                    delete
+                                </span></button>
+                        </form>
                     </td>
-                </tr>
+
+                     </tr>
             @endforeach
         </tbody>
     </table>

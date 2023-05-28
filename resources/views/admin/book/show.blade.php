@@ -1,6 +1,5 @@
 @extends('layouts.admin.app')
 @section('admin_container')
-
     <section class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
@@ -31,9 +30,8 @@
                     </div>
 
                 </div>
-<a class="btn btn-info" href="{{ url('admin/book/index') }}">Back</a>
+                <a class="btn btn-info" href="@route('admin.book.index')">Back</a>
             </div>
         </div>
     </section>
-
 @endsection

@@ -45,10 +45,14 @@ class BookController extends Controller
     /* specific resource edit */
     public function edit($id)
     {
-        $categories = CategoryService::categoryList();
-        $locations = LocationService::findAll();
-        $edit = BookService::findById($id);
-        return view('admin.book.createOrUpdate', compact('edit', 'categories', 'locations'));
+        try {
+            $categories = CategoryService::categoryList();
+            $locations = LocationService::findAll();
+            $edit = BookService::findById($id);
+            return view('admin.book.createOrUpdate', compact('edit', 'categories', 'locations'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
     
     /* sepecific reosurce update */
@@ -63,14 +67,19 @@ class BookController extends Controller
         
     }
 
-
+    /* specific resoruce show */
     public function show($id)
     {
-        $show = Book::find($id);
-        return view('admin.book.show', compact('show'));
+        try {
+            $show = Book::find($id);
+            return view('admin.book.show', compact('show'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+        
     }
 
-
+    /* published unpublished */
     public function status($id)
     {
         $book = Book::find($id);
@@ -86,13 +95,14 @@ class BookController extends Controller
         }
     }
 
-
+    /* specific reosurce delete */
     public function destroy($id)
     {
         Book::find($id)->delete();
         return back();
     }
 
+    /* pending book request */
     public function pending()
     {
         $books = Book::where('role_id', 2)->get(['id', 'title', 'ISBN', 'image', 'author', 'user_id', 'status']);
