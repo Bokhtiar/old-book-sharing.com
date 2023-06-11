@@ -100,21 +100,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul  class="navbar-nav mx-auto mb-2 mb-lg-0 ">
-        <li class="nav-item">
+        <li class="nav-item px-2">
           <a style=" font-weight: bold; "  class=" nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
         </li>
-        <li  class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Category
-          </a>
-          <ul style="background-color:#e3f2fd" class="dropdown-menu" aria-labelledby="navbarDropdown">
-          @foreach ($categories as $category )
-          <li><a class="dropdown-item" href="{{ url('category',$category->id) }}">{{ $category->name }}</a></li>
-          @endforeach
-          </ul>
-        </li>
+      
 
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown px-2">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Location
           </a>
@@ -125,19 +116,19 @@
           </ul>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('book') }}">Book's</a>
+        <li class="nav-item px-2">
+          <a class="nav-link" href="{{ url('book') }}">Book</a>
         </li>
 
       
 
-        <li class="nav-item">
+        <li class="nav-item px-2">
           <a class="nav-link" href="{{ url('user/cart-detail') }}"><i class="fas fa-cart-arrow-down"></i> <span>{{ App\Models\Cart::total_item_cart() }}</span></a>
         </li>
 
        
 
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown px-2">
           @if (Auth::check())
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class=" h3 fas fa-user-circle"></i>
