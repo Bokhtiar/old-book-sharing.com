@@ -1,6 +1,16 @@
 @extends('layouts.user.app')
 @section('content')
- <section class="container my-5">
+
+<section class="container">
+    <nav aria-label="breadcrumb" style="background-color: #F2F4F4">
+        <ol class="breadcrumb py-3 px-3">
+          <li class="breadcrumb-item"><a style="text-decoration: none"  href="{{url('/')}}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Book</li>
+        </ol>
+      </nav>
+</section>
+ <section class="container my-5 card">
+
     <table class="table text-center">
         <thead>
           <tr>
@@ -32,7 +42,7 @@
             <td>
                 <form action="{{ url('user/cart/quantity-store',$cart->id) }}" method="POST" class="form-inline">
                     @csrf
-                    <input class="form-control" type="number" class="" name="quantity" value="{{ $cart->quantity }}" id="">
+                    <input class=" rounded border-none" style="width: 70px" type="number" class="" name="quantity" value="{{ $cart->quantity }}" id="">
                     <input style="background-color: #2ecc71 ;" class="btn  btn-sm text-light my-2" type="submit" name="" value="Submit" id="">
                 </form>
             </td>
@@ -44,7 +54,7 @@
         @endforeach
         </tbody>
       </table>
-      <div class="my-5 text-center">
+      <div class="text-right py-2">
         <a style="background-color:#30336b" class="btn btn-sm text-light" href="{{ url('/') }}">Continue Shopping</a>
         <button style="background-color: #2ecc71"  class="btn btn-sm text-light"> Total : {{$total}} Tk </button>
         
@@ -52,34 +62,8 @@
  </section>
 
 
- <section>
-     <style>
-        input{
-          border: 1px solid;
-          border-radius: 20px;
-          box-shadow: 3px 3px 5px 6px #ccc;
-        }
-        select{
-          border: 1px solid;
-          border-radius: 20px;
-          box-shadow: 3px 3px 5px 6px #ccc;
-        }
-        textarea{
-          border: 1px solid;
-          border-radius: 20px;
-          box-shadow: 3px 3px 5px 6px #ccc;
-        }
-
-        .desing{
-            -moz-box-shadow:    inset 0 0 5px rgb(51,51,51);
-            -webkit-box-shadow: inset 0 0 5px rgb(51,51,51);
-             box-shadow:         inset 0 0 5px rgb(51,51,51);
-    }
-
-        </style>
-
-
-        <section class="container">
+ <section class="container card" >
+        
             <div class="row justify-content-center desing">
                 <div class="col-md-10 my-4">
                     <p style="color: #EA2027"class="h3 ">
@@ -150,8 +134,8 @@
                     </form>
                 </div>
             </div>
-        </section><br>
+        
 
     </section>
- </section>
+
 @endsection

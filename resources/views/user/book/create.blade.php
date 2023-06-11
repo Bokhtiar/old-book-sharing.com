@@ -1,90 +1,119 @@
 @extends('layouts.user.app')
 @section('content')
-<style>
-        input{
-          border: 1px solid;
-          border-radius: 20px;
-          box-shadow: 3px 3px 5px 6px #ccc;
-        }
-        select{
-          border: 1px solid;
-          border-radius: 20px;
-          box-shadow: 3px 3px 5px 6px #ccc;
-        }
-        textarea{
-          border: 1px solid;
-          border-radius: 20px;
-          box-shadow: 3px 3px 5px 6px #ccc;
-        }
+    <section class="container">
+        <nav aria-label="breadcrumb" style="background-color: #F2F4F4">
+            <ol class="breadcrumb py-3 px-3">
+                <li class="breadcrumb-item"><a style="text-decoration: none" href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Book create</li>
+            </ol>
+        </nav>
+    </section>
 
-    .desing{
-        -moz-box-shadow:    inset 0 0 5px rgb(51,51,51);
-       -webkit-box-shadow: inset 0 0 5px rgb(51,51,51);
-       box-shadow:         inset 0 0 5px rgb(51,51,51);
-    }
+    <section class=" container">
+        <div class="card p-4">
 
-    </style>
 
-    <section class="container my-3">
-        <div class="row justify-content-center desing">
-            <div class="col-md-7">
-                <h2 class="text-center my-2">Create New Book Form</h2>
-                <form action="{{ url('user/book/store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                        <div class="form-group">
-                            <label style="font-weight:bold" class="my-1" for="">Select Category *</label>
-                            <select name="category_id" class="form-control" id="" required>
-                                <option style="font-weight:bold" class="my-1"  value="">Select Category</option>
-                                @foreach ($categories as $category)
-                                <option value="{{$category->id}}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label style="font-weight:bold" class="my-1"  for="">Select Location *</label>
-                            <select name="location_id" class="form-control" id="" required>
-                                <option value="">Select Location</option>
-                                @foreach ($locations as $location)
-                                <option value="{{$location->id}}">{{ $location->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label style="font-weight:bold" class="my-1"  for="">Book Title *</label>
-                            <input type="text" placeholder="Book Title" name="title" class="form-control"  id="" required>
-                        </div>
-                        <div class="form-group">
-                            <label style="font-weight:bold" class="my-1"  for="">Book ISBN *</label>
-                            <input type="number" name="ISBN" class="form-control" placeholder="Book ISBN" id="" required>
-                        </div>
-                        <div class="form-group">
-                            <label style="font-weight:bold" class="my-1"  for="">Book Author *</label>
-                            <input type="test" name="author" class="form-control" placeholder="Book Author" id="" required>
-                        </div>
+            <form action="{{ url('user/book/store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
 
-                        <div class="form-group">
-                            <label style="font-weight:bold" class="my-1"  for="">Book Image *</label>
-                            <input type="file" name="image" class="form-control" value="" id="" required>
-                        </div>
+                    {{-- title --}}
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        @component('components.input', [
+                            'label' => 'Book name',
+                            'name' => 'title',
+                            'placeholder' => 'Book title type here',
+                            'value' => @$edit ? @$edit->title : '',
+                        ])
+                        @endcomponent
+                    </div>
 
-                        <div class="form-group">
-                            <label style="font-weight:bold" class="my-1"  for="">Book price *</label>
-                            <input type="number" name="price" class="form-control" placeholder="Book Price" id="" required>
-                        </div>
-                        <div class="form-group">
-                            <label style="font-weight:bold" class="my-1"  for="">Book Description *</label>
-                            <textarea name="description" class="form-control" id="" placeholder="Description" cols="30" rows="10"></textarea>
-                        </div>
+                    {{-- price --}}
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        @component('components.input', [
+                            'label' => 'Book price',
+                            'name' => 'price',
+                            'placeholder' => 'Book price type here',
+                            'value' => @$edit ? @$edit->price : '',
+                        ])
+                        @endcomponent
+                    </div>
 
-                        <div class="text-center my-3">
-                            <input style="background-color:#2e86de" type="submit" class="btn text-light" name="btn" value="Create New Book" id="">
-                        </div>
+                    {{-- Category --}}
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        @component('components.select', [
+                            'id' => 'id',
+                            'name' => 'category_id',
+                            'resource' => $categories,
+                            'field_id' => 'id',
+                            'label' => 'Select category',
+                            'field_name' => 'name',
+                            'value' => @$edit ? @$edit->id : '',
+                        ])
+                        @endcomponent
+                    </div>
 
-                </form>
-            </div>
+                    {{-- location --}}
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        @component('components.select', [
+                            'id' => 'id',
+                            'name' => 'location_id',
+                            'resource' => $locations,
+                            'field_id' => 'id',
+                            'label' => 'Select category',
+                            'field_name' => 'name',
+                            'value' => @$edit ? @$edit->id : '',
+                        ])
+                        @endcomponent
+                    </div>
+
+                    {{-- ISBN --}}
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        @component('components.input', [
+                            'label' => 'Book ISBN',
+                            'name' => 'ISBN',
+                            'placeholder' => 'Book ISBN type here',
+                            'value' => @$edit ? @$edit->ISBN : '',
+                        ])
+                        @endcomponent
+                    </div>
+
+                    {{-- price --}}
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        @component('components.input', [
+                            'label' => 'Book author',
+                            'name' => 'author',
+                            'placeholder' => 'Book author type here',
+                            'value' => @$edit ? @$edit->author : '',
+                        ])
+                        @endcomponent
+                    </div>
+
+                    {{-- image --}}
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        @component('components.input', [
+                            'label' => 'Book image',
+                            'name' => 'image',
+                            'type' => 'file',
+                            'placeholder' => '',
+                            'value' => @$edit ? @$edit->image : '',
+                        ])
+                        @endcomponent
+                    </div>
+
+                    {{-- description --}}
+                    <div>
+                        <textarea class="form-control" class="p-2" name="description" id="" cols="30" rows="10"></textarea>
+                    </div>
+
+                    <div class="text-center my-4">
+                        <input type="submit" name="" class="btn btn-outline-success" value="Submit" id="">
+                    </div>
+
+                </div>
+            </form>
         </div>
-    </section><br>
 
 
-</section>
+    </section>
 @endsection

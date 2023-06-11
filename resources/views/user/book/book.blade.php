@@ -1,24 +1,7 @@
 @extends('layouts.user.app')
 @section('content')
 
-<style>
-    .polaroid{
 
-padding: 10px;
-box-shadow: 5px 5px 15px 6px #d4d4d4;
-height: 280px;
-text-align: center;
-}
-.polaroid-hover{
-padding: 10px;
-box-shadow: 5px 5px 15px 6px #d4d4d4;
-height: 420px;
-text-align: center;
-}
-a{
-    text-decoration: none;
-}
-</style>
 <section class="container my-5">
   <nav aria-label="breadcrumb" style="background-color: #F2F4F4">
     <ol class="breadcrumb py-3 px-3">

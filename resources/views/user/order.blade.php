@@ -1,6 +1,6 @@
 @extends('layouts.user.app')
 @section('content')
- <section class="container my-5">
+ <section class="container my-5 card">
     <table class="table text-center">
         <thead>
           <tr>
