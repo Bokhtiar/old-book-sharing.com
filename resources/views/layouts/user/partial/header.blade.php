@@ -103,18 +103,6 @@
         <li class="nav-item px-2">
           <a style=" font-weight: bold; "  class=" nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
         </li>
-      
-
-        <li class="nav-item dropdown px-2">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Location
-          </a>
-          <ul style="background-color:#e3f2fd" class="dropdown-menu" aria-labelledby="navbarDropdown">
-          @foreach ($locations as $location)
-          <li><a class="dropdown-item" href="{{ url('location',$location->id) }}">{{ $location->name }}</a></li>
-          @endforeach
-          </ul>
-        </li>
 
         <li class="nav-item px-2">
           <a class="nav-link" href="{{ url('book') }}">Book</a>
@@ -122,6 +110,10 @@
 
         <li class="nav-item px-2">
           <a class="nav-link" href="{{ url('location') }}">Location</a>
+        </li>
+
+        <li class="nav-item px-2">
+          <a class="nav-link" href="{{ url('category') }}">Category</a>
         </li>
 
       

@@ -7,7 +7,7 @@
     <nav aria-label="breadcrumb" style="background-color: #F2F4F4">
         <ol class="breadcrumb py-3 px-3">
           <li class="breadcrumb-item"><a style="text-decoration: none"  href="{{url('/')}}">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Book</li>
+          <li class="breadcrumb-item active" aria-current="page">Location</li>
         </ol>
       </nav>
 

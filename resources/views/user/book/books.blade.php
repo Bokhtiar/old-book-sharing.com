@@ -14,17 +14,10 @@
   </nav>
 
 
-  <div class="row">
-    <div class="col-sm-12 col-md-3 col-lg-3 p-2 my-4">
-      <ul class="list-group">
-        <li class="list-group-item bg-success text-white"> All categories </li>
-        @foreach ($categories as $category)
-          <li class="list-group-item"> <a class="dropdown-item" href="{{ url('category',$category->id) }}">{{ $category->name }}</a> </li>    
-        @endforeach
-      </ul>
-    </div>
+  <div class="">
+  
     {{-- book show --}}
-    <div class="col-sm-12 col-md-9 col-lg-9">
+    <div class="">
       <div class="row p-2">
 
         @forelse ($books as $book)
