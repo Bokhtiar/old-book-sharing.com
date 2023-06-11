@@ -14,12 +14,8 @@
   </nav>
 
 
-  <div class="">
-  
-    {{-- book show --}}
-    <div class="">
-      <div class="row p-2">
 
+      <div class="row p-2">
         @forelse ($books as $book)
         <div class="col-sm-6 col-6 col-md-3 col-lg-3  my-4 rounded-lg" >
           <div class=" shadow p-3" style="width: 100%; margin-left:0px;" >
@@ -38,9 +34,6 @@
 
        
       </div>
-    </div>
 
-    
-  </div>
 </section>
 @endsection
