@@ -14,6 +14,7 @@ Route::get('/about', [App\Http\Controllers\User\UserDashboardController::class, 
 Route::get('/contact-us', [App\Http\Controllers\User\BooksController::class, 'contact']);
 Route::get('/book', [App\Http\Controllers\User\BooksController::class, 'books']);
 Route::get('/book/detail/{id}', [App\Http\Controllers\User\BooksController::class, 'detail']);
+Route::get('location', [App\Http\Controllers\User\LocationController::class, 'list']);
 Route::get('location/{id}', [App\Http\Controllers\User\LocationController::class, 'index']);
 Route::get('category/{id}', [App\Http\Controllers\User\CategoryController::class, 'index']);
 Route::post('message', [App\Http\Controllers\User\MessageController::class, 'store']);

@@ -120,6 +120,10 @@
           <a class="nav-link" href="{{ url('book') }}">Book</a>
         </li>
 
+        <li class="nav-item px-2">
+          <a class="nav-link" href="{{ url('location') }}">Location</a>
+        </li>
+
       
 
         <li class="nav-item px-2">

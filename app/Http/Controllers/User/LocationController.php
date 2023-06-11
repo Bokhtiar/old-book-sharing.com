@@ -9,6 +9,15 @@ use App\Models\Book;
 
 class LocationController extends Controller
 {
+    /* list of display resoruce */
+    public function list()
+    {
+        $books = Book::where('status',1)->get();
+        $locations = Location::get();
+        return view('user.location_list', compact('locations', 'books'));
+    }
+
+    /* list of display resoruce location has assing*/
     public function index($id)
     {
 
