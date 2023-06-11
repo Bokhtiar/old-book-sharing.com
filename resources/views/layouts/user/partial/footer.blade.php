@@ -1,52 +1,63 @@
-<section class="bg-light">
-    <div style="background-color: #e3f2fd " class="ml-3 mr-3">
-        <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3">
-                <h3 class="text-center"><i class="fa fa-address-book" aria-hidden="true"></i> About Us</h3><hr>
-                <p class="lead">This website is used book selling system where students can sell or buying book.Also this website user friendly.</p>
-
-            </div>
-            <div class="col-sm-12 col-md-3 col-lg-3">
-                <h3 class="text-center"><i class=" fas fa-location-arrow"></i> Address</h3><hr>
-                <P ><i class="h4 fas fa-location-arrow"></i> Dhaka</P>
-                <P><i class=" h4 fas fa-phone"></i> 02384923</P>
-                <P><i class=" h4 fas fa-envelope"></i> abc@example.com</P>
-            </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 text-center">
-                <h3><i class="fas fa-thumbtack"></i> Follow Us</h3><hr>
-                <a href="https://www.facebook.com/" class=""><i class=" h3 fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/" class=""> <i class=" h3 fab fa-instagram-square"></i> </a>
-                <a href="http://skype.com/" class=""><i class=" h3 fab fa-skype"></i></a><br>
-                <a href="https://www.linkedin.com/" class=""><i class="h3 fab fa-linkedin"></i></a>
-                <a href="http://twitter.com/" class=""><i class="h3 fab fa-twitter-square"></i></a><br>
-
-            </div>
-
-                <div class="col-sm-12 col-md-3 col-lg-3 text-center">
-                    <h3 class=""><i class=" fas fa-phone"></i> Contact Us</h3><hr>
-                    
-                        <form action="{{ url('message') }}" method="POST">
-                            @csrf
-                            <div class="form-gorup">
-                                <label for="">Enter Your Mail</label>
-                                <input type="email" name="email" class="form-control" id="">
-                            </div>
-                            <div class="form-gorup">
-                                <label for="">Enter Your Message</label>
-                                <input type="text" name="message" class="form-control" id="">
-                            </div>
-                            <div class="form-gorup text-center my-3">
-                                <input style="background-color:#2ecc71" type="submit" name="" value="Submit" class="btn text-light" id="">
-                            </div>
-
-                        </form>
-                    
-
-                </div>
-
-
+<style>
+    .footer{
+  background: #152F4F;
+  color:white;
+  
+  .links{
+    ul {list-style-type: none;}
+    li a{
+      color: white;
+      transition: color .2s;
+      &:hover{
+        text-decoration:none;
+        color:#4180CB;
+        }
+    }
+  }  
+  .about-company{
+    i{font-size: 25px;}
+    a{
+      color:white;
+      transition: color .2s;
+      &:hover{color:#4180CB}
+    }
+  } 
+  .location{
+    i{font-size: 18px;}
+  }
+  .copyright p{border-top:1px solid rgba(255,255,255,.1);} 
+}
+</style>
+<div class="mt-5 pt-5 pb-5 footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-xs-12 about-company">
+          <h2>Heading</h2>
+          <p class="pr-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis </p>
+          <p><a href="#"><i class="fa fa-facebook-square mr-1"></i></a><a href="#"><i class="fa fa-linkedin-square"></i></a></p>
         </div>
+        <div class="col-lg-3 col-xs-12 links">
+          <h4 class="mt-lg-0 mt-sm-3">Links</h4>
+            <ul class="m-0 p-0">
+              <li>- <a href="#">Lorem ipsum</a></li>
+              <li>- <a href="#">Nam mauris velit</a></li>
+              <li>- <a href="#">Etiam vitae mauris</a></li>
+              <li>- <a href="#">Fusce scelerisque</a></li>
+              <li>- <a href="#">Sed faucibus</a></li>
+              <li>- <a href="#">Mauris efficitur nulla</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-4 col-xs-12 location">
+          <h4 class="mt-lg-0 mt-sm-4">Location</h4>
+          <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
+          <p class="mb-0"><i class="fa fa-phone mr-3"></i>(541) 754-3010</p>
+          <p><i class="fa fa-envelope-o mr-3"></i>info@hsdf.com</p>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col copyright">
+          <p class=""><small class="text-white-50">© 2019. All Rights Reserved.</small></p>
+        </div>
+      </div>
     </div>
-</section>
-
-
+    </div>

@@ -13,26 +13,43 @@
     }
 
     </style>
+    <section class="container">
 
-          <section class="my-5"><!--books-->
-            <div class="text-center my-3">
-              <h2>Categories Books : {{$category_name}} </h2>
+    
+          <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3 p-2 my-4">
+              <ul class="list-group">
+                <li class="list-group-item"> All categories </li>
+                @foreach ($categories as $category)
+                  <li class="list-group-item"> <a class="dropdown-item" href="{{ url('category',$category->id) }}">{{ $category->name }}</a> </li>    
+                @endforeach
+              </ul>
             </div>
-            <div class="container">
+            {{-- book show --}}
+            <div class="col-sm-12 col-md-9 col-lg-9">
               <div class="row p-2">
-                @foreach ($books as $book)
-                <div class=" col-sm-6 col-6 col-md-3 col-lg-3 polaroid my-4" >
-                    <div class="card" style="width: 100%; margin-left:0px;" >
+
+                @forelse ($books as $book)
+                <div class="col-sm-6 col-6 col-md-3 col-lg-3  my-4 rounded-lg" >
+                  <div class=" shadow p-3" style="width: 100%; margin-left:0px;" >
                     <a href="{{ url('book/detail',$book->id) }}">
-                      <img height="200px" width="100%" src="{{ asset($book->image) }}" class="card-img-top p-2"  alt="...">
+                        <img height="250px" width="100%" src="{{ asset($book->image) }}" class="card-img-top p-2"  alt="...">
                     </a>
-                      <div class="card-body">
-                        <p class="card-text "><a class="text-dark" href="{{ url('book/detail',$book->id) }}">{{ $book->title }}</a>.</p>
-                      </div>
+                    <div class="card-body d-flex justify-content-between pt-2">
+                      <p class="card-text text-capitalize h6"><a href="{{ url('book/detail',$book->id) }}">{{ $book->title }}</a> </p>
+                      <span>{{$book->price}}Tk</span>
                     </div>
                   </div>
-                @endforeach
+                </div>
+                @empty
+                    <img height="500" width="100%" src="{{ asset('image/four0four') }}" alt="">
+                @endforelse
+
+               
               </div>
             </div>
-          </section><!-- end of book-->
+
+            
+          </div>
+        </section>
 @endsection

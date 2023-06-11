@@ -22,7 +22,7 @@ class CreateBooksTable extends Migration
             $table->string('title');
             $table->string('author');
             $table->string('image');
-            $table->string('description');
+            $table->longText('description');
             $table->integer('price');
             $table->integer('role_id');
             $table->string('status')->default(0);
