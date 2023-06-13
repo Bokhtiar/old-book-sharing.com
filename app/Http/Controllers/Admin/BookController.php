@@ -3,28 +3,36 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Book;
-use App\Models\Category;
 use App\Models\Location;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\BookRequest;
 use App\Services\Admin\BookService;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
     public function index()
     {
-        $books = BookService::findAll();
-        return view('admin.book.index', compact('books'));
+        try {
+            $books = BookService::findAll();
+            return view('admin.book.index', compact('books'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     public function create()
     {
-        $categories = Category::all();
-        $locations = Location::all();
-        return view('admin.book.createOrUpdate', compact('categories', 'locations'));
+        try {
+            $locations = LocationService::findAll();
+            $categories = CategoryService::categoryList();
+            return view('admin.book.createOrUpdate', compact('categories', 'locations'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     public function store(Request $request)
