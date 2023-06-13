@@ -1,8 +1,5 @@
 @extends('layouts.user.app')
 @section('content')
-
-
-
     <section>
         <!--start of slider-->
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -40,26 +37,22 @@
                         class="btn btn-sm btn-outline-success p-1 far fa-list-alt"></i></span>
             </div>
             <div class="card-body">
-                 
-
-        
-        <section class="row">
-            @foreach ($categories as $category)
-                <div class="col-sm-6 col-md-2 col-lg-2">
-                    <div class="card" style="width: 11rem;">
-                        <img class="" style="height: 140px" src="{{ $category->image }}" alt="Card image cap">
-                        <div class="card-body bg-success">
-                            <a href="" class="text-white text-center" style="text-decoration: none">{{ $category->name }}</a>
+                <section class="row">
+                    @foreach ($categories as $category)
+                        <div class="col-sm-6 col-md-2 col-lg-2 my-2">
+                            <div class="card" style="width: 11rem;">
+                                <img class="" style="height: 140px" src="{{ $category->image }}" alt="Card image cap">
+                                <div class="card-body bg-success">
+                                    <a href="" class="text-white text-center"
+                                        style="text-decoration: none">{{ $category->name }}</a>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                </div>
-            @endforeach
-        </section>
-    </div>
-</div>
+                    @endforeach
+                </section>
+            </div>
+        </div>
     </section>
-
-
 
     <section class="  my-5 container">
         <div class="row">
@@ -103,7 +96,7 @@
 
         {{-- books with category --}}
         <div class="">
-      
+
             {{-- book show --}}
             <div class="">
                 <div class="row p-2">
