@@ -3,6 +3,7 @@
       <tr>
           <th scope="col">Index</th>
           <th scope="col">Category Name</th>
+          <th scope="col">Category Image</th>
           <th scope="col">Action</th>
       </tr>
   </thead>
@@ -11,6 +12,7 @@
           <tr>
               <th scope="row">{{ $loop->index }}</th>
               <td>{{ $item->name }}</td>
+              <td><img src="{{ asset($item->image) }}" height="64px" width="48px" alt=""></td>
               <td class="d-flex flex-row float-right gap-3">
                   {{-- edit   --}}
                   <a class="btn btn-sm btn-success mr-2" href="@route('admin.category.edit', $item->id)"><span

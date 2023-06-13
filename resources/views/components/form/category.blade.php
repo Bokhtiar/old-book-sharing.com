@@ -1,10 +1,10 @@
 <div>
     @if (@$edit)
-        <form action="@route('admin.category.update', @$edit->id)" method="POST">
+        <form action="@route('admin.category.update', @$edit->id)" method="POST" enctype="multipart/form-data">
             @method('PUT')
             @csrf
         @else
-            <form action="@route('admin.category.store')" method="POST">
+            <form action="@route('admin.category.store')" method="POST" enctype="multipart/form-data">
                 @method('POST')
                 @csrf
     @endif
@@ -12,6 +12,16 @@
         'label' => 'Category name',
         'name' => 'name',
         'placeholder' => 'type here category name',
+        'value' => @$edit ? @$edit->name : '',
+        'required' => true,
+    ])
+    @endcomponent 
+
+    @component('components.input', [
+        'label' => 'Category image',
+        'name' => 'image',
+        'placeholder' => '',
+        'type' => 'file',
         'value' => @$edit ? @$edit->name : '',
         'required' => true,
     ])

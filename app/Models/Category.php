@@ -12,7 +12,8 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
-        'status'
+        'status',
+        'image',
     ];
     protected $guarded;
 
