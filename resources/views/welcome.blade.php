@@ -1,5 +1,8 @@
 @extends('layouts.user.app')
 @section('content')
+
+
+
     <section>
         <!--start of slider-->
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -25,37 +28,67 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    </section><!-- end of slider--> 
+    </section><!-- end of slider-->
+
+
+
+    <section class="my-5 container">
+        <div class="card">
+            <div class="d-flex justify-content-between shadow-sm  px-4 py-2">
+                <h2>Our Category List</h2>
+                <span class="mt-2"><i class="btn btn-sm btn-outline-success p-1 fas fa-list"></i> <i
+                        class="btn btn-sm btn-outline-success p-1 far fa-list-alt"></i></span>
+            </div>
+            <div class="card-body">
+                 
+
+        
+        <section class="row">
+            @foreach ($categories as $category)
+                <div class="col-sm-6 col-md-2 col-lg-2">
+                    <div class="card" style="width: 11rem;">
+                        <img class="" style="height: 140px" src="{{ $category->image }}" alt="Card image cap">
+                        <div class="card-body bg-success">
+                            <a href="" class="text-white text-center" style="text-decoration: none">{{ $category->name }}</a>
+                        </div>
+                      </div>
+                </div>
+            @endforeach
+        </section>
+    </div>
+</div>
+    </section>
+
+
 
     <section class="  my-5 container">
-      <div class="row">
-      @foreach ($homeCategories as $item)
-        <div class="col-sm-12 col-md-4 col-lg-4 border border-2 py-2" style="margin:4px">
-            <h2 class="text-center bg-success text-white py-3">{{ $item->name }}</h2>
-            <div class="row mt-4">
-              @foreach ( App\Models\Category::categoryBook($item->id) as $book)
-                {{-- book show start here --}}
-                <div class="col-md-2 col-lg-2 ">
-                    <img class="mx-auto" height="64px" width="48px"
-                        src="{{ asset($book->image) }}"
-                        alt="">
+        <div class="row">
+            @foreach ($homeCategories as $item)
+                <div class="col-sm-12 col-md-4 col-lg-4 border border-2 py-2" style="margin:4px">
+                    <h2 class="text-center bg-success text-white py-3">{{ $item->name }}</h2>
+                    <div class="row mt-4">
+                        @foreach (App\Models\Category::categoryBook($item->id) as $book)
+                            {{-- book show start here --}}
+                            <div class="col-md-2 col-lg-2 ">
+                                <img class="mx-auto" height="64px" width="48px" src="{{ asset($book->image) }}"
+                                    alt="">
+                            </div>
+                            <div class="col-md-10 col-lg-10">
+                                <span>{{ $book->title }}</span><br>
+                                <span>{{ $book->author }}</span><br>
+                                <span><span class="fa fa-star" style="color: yellow; font-size:10px"></span>
+                                    <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
+                                    <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
+                                    <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
+                                    <span class="fa fa-star" style=" font-size:10px"></span></span>
+                            </div>
+                            <hr>
+                            {{-- book show end here --}}
+                        @endforeach
+                    </div>
                 </div>
-                <div class="col-md-10 col-lg-10">
-                    <span>{{ $book->title }}</span><br>
-                    <span>{{ $book->author }}</span><br>
-                    <span><span class="fa fa-star" style="color: yellow; font-size:10px"></span>
-                        <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
-                        <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
-                        <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
-                        <span class="fa fa-star" style=" font-size:10px"></span></span>
-                </div>
-                <hr>
-                {{-- book show end here --}}
-                @endforeach
-            </div>
+            @endforeach
         </div>
-      @endforeach
-    </div>
     </section>
 
 
@@ -69,18 +102,10 @@
         </div>
 
         {{-- books with category --}}
-        <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3 p-2 my-4">
-                <ul class="list-group">
-                    <li class="list-group-item bg-success text-white"> All categories </li>
-                    @foreach ($categories as $category)
-                        <li class="list-group-item"> <a class="dropdown-item"
-                                href="{{ url('category', $category->id) }}">{{ $category->name }}</a> </li>
-                    @endforeach
-                </ul>
-            </div>
+        <div class="">
+      
             {{-- book show --}}
-            <div class="col-sm-12 col-md-9 col-lg-9">
+            <div class="">
                 <div class="row p-2">
                     @foreach ($books as $book)
                         <div class="col-sm-6 col-6 col-md-3 col-lg-3  my-4 rounded-lg">
