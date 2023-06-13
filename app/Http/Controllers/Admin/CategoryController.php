@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Services\Admin\CategoryService;
@@ -19,7 +19,7 @@ class CategoryController extends Controller
             throw $th;
         }
     }
-
+ 
     /* store new document */
     public function store(CategoryRequest $request)
     {

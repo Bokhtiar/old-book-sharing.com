@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
  
-use App\Models\Location;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\Admin\LocationService;
 use App\Http\Requests\locationRequest;

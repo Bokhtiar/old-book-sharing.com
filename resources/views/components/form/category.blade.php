@@ -15,7 +15,16 @@
         'value' => @$edit ? @$edit->name : '',
         'required' => true,
     ])
-    @endcomponent
+    @endcomponent 
+
+    <div class="form-group my-2">
+        <label for="">Placement</label>
+        <select name="status" class="form-control" id="">
+            <option value="1">Normale category</option>
+            <option value="2">Home category</option>
+        </select>
+       
+    </div>
 
     {{-- button --}}
     @if (@$edit)

@@ -4,6 +4,8 @@ namespace App\Services\Admin;
 
 use App\Models\Book;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
 
 class BookService
 {
@@ -23,10 +25,10 @@ class BookService
                 $ext = strtolower($image->getClientOriginalExtension());
                 $image_full_name = $image_name . '.' . $ext;
                 $upload_path = 'image/';
-                $image_url = $upload_path . $image_full_name;
+                $image_urls = $upload_path . $image_full_name;
                 $success = $image->move($upload_path, $image_full_name);
                 if ($success) {
-                    $image_url = $image_url;
+                    $image_url = $image_urls;
                 }
             }
         } else {
@@ -39,8 +41,8 @@ class BookService
             'location_id' => $request->location_id,
             'title' => $request->title,
             'author' => $request->author,
-            'user_id' => $request->user_id,
-            'role_id' => $request->role_id,
+            'user_id' => Auth::id(),
+            'role_id' => Auth::user()->role_id,
             'description' => $request->description,
             'price' => $request->price,
             'image' => $image_url,
@@ -63,6 +65,6 @@ class BookService
     public static function update($id, $request)
     {
         $book = BookService::findById($id);
-        return $category->update(BookService::storeDocument($request, $book->image));
+        return $book->update(BookService::storeDocument($request, $book->image));
     }
 }

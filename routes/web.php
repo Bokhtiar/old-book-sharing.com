@@ -14,7 +14,9 @@ Route::get('/about', [App\Http\Controllers\User\UserDashboardController::class, 
 Route::get('/contact-us', [App\Http\Controllers\User\BooksController::class, 'contact']);
 Route::get('/book', [App\Http\Controllers\User\BooksController::class, 'books']);
 Route::get('/book/detail/{id}', [App\Http\Controllers\User\BooksController::class, 'detail']);
+Route::get('location', [App\Http\Controllers\User\LocationController::class, 'list']);
 Route::get('location/{id}', [App\Http\Controllers\User\LocationController::class, 'index']);
+Route::get('category', [App\Http\Controllers\User\CategoryController::class, 'list']);
 Route::get('category/{id}', [App\Http\Controllers\User\CategoryController::class, 'index']);
 Route::post('message', [App\Http\Controllers\User\MessageController::class, 'store']);
 Route::post('search', [App\Http\Controllers\User\UserDashboardController::class, 'search']);
@@ -48,21 +50,11 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "middleware"=>['auth','admin
 
     /* location */
     Route::resource('/location', LocationController::class);
-    
+     
     /* book */
     Route::resource('/book', BookController::class);
-
-    // Route::get('book/index', [App\Http\Controllers\Admin\BookController::class, 'index']);
-    // Route::get('book/create', [App\Http\Controllers\Admin\BookController::class, 'create']);
-    // Route::post('book/store', [App\Http\Controllers\Admin\BookController::class, 'store']);
-    // Route::post('book/store/{id}', [App\Http\Controllers\Admin\BookController::class, 'update']);
-    // Route::get('book/edit/{id}', [App\Http\Controllers\Admin\BookController::class, 'edit']);
-    // Route::get('book/view/{id}', [App\Http\Controllers\Admin\BookController::class, 'show']);
-
-    
-    Route::get('book/status/{id}', [App\Http\Controllers\Admin\BookController::class, 'status']);
-    Route::get('book/user-post', [App\Http\Controllers\Admin\BookController::class, 'pending']);
-    Route::get('book/delete/{id}', [App\Http\Controllers\Admin\BookController::class, 'destroy']);
+    Route::get('/book/status/{id}', [App\Http\Controllers\Admin\BookController::class, 'status']);
+    Route::get('/user-post', [App\Http\Controllers\Admin\BookController::class, 'pending'])->name('user-post');
 
     //order
     Route::get('order/orders', [App\Http\Controllers\Admin\OrderController::class, 'index']);
@@ -71,10 +63,15 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "middleware"=>['auth','admin
     Route::get('order/detail/{id}', [App\Http\Controllers\Admin\OrderController::class, 'detail']);
     Route::post('order/porduct-quantiy/{id}', [App\Http\Controllers\Admin\OrderController::class, 'quantity']);
     Route::post('order/cart-delete/{id}', [App\Http\Controllers\Admin\OrderController::class, 'delete']);
+
     //message
-    Route::get('message/messages', [App\Http\Controllers\Admin\MessageController::class, 'index']);
+    // Route::get('message/messages', [App\Http\Controllers\Admin\MessageController::class, 'index']);
     Route::get('message/status/{id}', [App\Http\Controllers\Admin\MessageController::class, 'status']);
-    Route::get('message/delete/{id}', [App\Http\Controllers\Admin\MessageController::class, 'delete']);
+    // Route::get('message/delete/{id}', [App\Http\Controllers\Admin\MessageController::class, 'delete']);
+
+    Route::resource('message', 'App\Http\Controllers\Admin\MessageController', [
+        'only' => ['index', 'destroy']
+    ]);
 
     //logout
     Route::get('logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout']);

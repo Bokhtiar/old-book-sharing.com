@@ -1,16 +1,10 @@
 @extends('layouts.admin.app')
 @section('admin_container')
 
-        @component('components.breadcrumbs', [
-            'name' => 'All Categories',
+        {{-- book table --}}
+        @component('components.table.book', [
+            'books' => @$books,
         ])
         @endcomponent
-
-        {{-- table --}}
-        @component('components.table.book',[
-            'books' => @$books,
-        ]);
-        @endcomponent     
-
-
+ 
 @endsection

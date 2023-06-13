@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Book;
 use App\Models\Location;
-use App\Models\Category;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
 use App\Services\Admin\BookService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Services\Admin\CategoryService;
+use App\Services\Admin\LocationService;
 
 class BookController extends Controller
 {
+    /* resoruce list */
     public function index()
     {
         try {
@@ -24,6 +23,7 @@ class BookController extends Controller
         }
     }
 
+    /* create new resoruce form */
     public function create()
     {
         try {
@@ -35,94 +35,55 @@ class BookController extends Controller
         }
     }
 
-    public function store(Request $request)
+    /* create new resoruce store */
+    public function store(BookRequest $request)
     {
-        $book = new Book;
-        $book['ISBN'] = $request->ISBN;
-        $book['category_id'] = $request->category_id;
-        $book['location_id'] = $request->location_id;
-        $book['title'] = $request->title;
-        $book['author'] = $request->author;
-        $book['user_id'] = Auth::id();
-        $book['role_id'] = Auth::user()->role_id;
-        $book['description'] = $request->description;
-        $book['price'] = $request->price;
-
-        if ($request->image) {
-
-            $image = $request->file('image');
-            if ($image) {
-                $image_name = Str::random(20);
-                $ext = strtolower($image->getClientOriginalExtension());
-                $image_full_name = $image_name . '.' . $ext;
-                $upload_path = 'image/';
-                $image_url = $upload_path . $image_full_name;
-                $success = $image->move($upload_path, $image_full_name);
-                if ($success) {
-                    $book['image'] = $image_url;
-                }
-            }
-        } else {
-            $book['image'] = $book->image;
+        try {
+            BookService::store($request);
+            return redirect()->route('admin.book.index');
+        } catch (\Throwable $th) {
+            throw $th;
         }
-
-        $book->save();
-        return redirect('admin/book/index');
+       
     }
-
-
-    public function update($id = null, Request $request)
-    {
-
-        $book = Book::find($id);
-        $book['ISBN'] = $request->ISBN;
-        $book['category_id'] = $request->category_id;
-        $book['location_id'] = $request->location_id;
-        $book['title'] = $request->title;
-        $book['author'] = $request->author;
-
-        $book['user_id'] = Auth::id();
-
-
-        $book['role_id'] = Auth::user()->role_id;
-        $book['description'] = $request->description;
-        $book['price'] = $request->price;
-
-        if ($request->image) {
-
-            $image = $request->file('image');
-            if ($image) {
-                $image_name = Str::random(20);
-                $ext = strtolower($image->getClientOriginalExtension());
-                $image_full_name = $image_name . '.' . $ext;
-                $upload_path = 'image/';
-                $image_url = $upload_path . $image_full_name;
-                $success = $image->move($upload_path, $image_full_name);
-                if ($success) {
-                    $book['image'] = $image_url;
-                }
-            }
-        }
-        $book->save();
-        return redirect('admin/book/index');
-    }
-
-
+    /* specific resource edit */
     public function edit($id)
     {
-        $categories = Category::all();
-        $locations = Location::all();
-        $edit = Book::find($id);
-        return view('admin.book.createOrUpdate', compact('edit', 'categories', 'locations'));
+        try {
+            $categories = CategoryService::categoryList();
+            $locations = LocationService::findAll();
+            $edit = BookService::findById($id);
+            return view('admin.book.createOrUpdate', compact('edit', 'categories', 'locations'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    
+    /* sepecific reosurce update */
+    public function update($id = null, BookRequest $request)
+    {
+        try {
+            BookService::update($id, $request);
+            return redirect()->route('admin.book.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+        
     }
 
+    /* specific resoruce show */
     public function show($id)
     {
-        $show = Book::find($id);
-        return view('admin.book.show', compact('show'));
+        try {
+            $show = Book::find($id);
+            return view('admin.book.show', compact('show'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+        
     }
 
-
+    /* published unpublished */
     public function status($id)
     {
         $book = Book::find($id);
@@ -138,16 +99,21 @@ class BookController extends Controller
         }
     }
 
-
+    /* specific reosurce delete */
     public function destroy($id)
     {
         Book::find($id)->delete();
         return back();
     }
 
+    /* pending book request */
     public function pending()
     {
-        $books = Book::where('role_id', 2)->get(['id', 'title', 'ISBN', 'image', 'author', 'user_id', 'status']);
-        return view('admin.book.user_post', compact('books'));
+        try {
+            $books = Book::where('role_id', 2)->get(['id', 'title', 'ISBN', 'image', 'author', 'user_id', 'status']);
+            return view('admin.book.user_post', compact('books'));            
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

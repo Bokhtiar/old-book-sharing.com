@@ -19,6 +19,7 @@ class CategoryService
         return array(
             'name' => $request->name,
             'slug' => Str::slug($request->name),
+            'status' => $request->status,
         );
     }
 
