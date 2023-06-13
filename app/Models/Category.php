@@ -15,4 +15,9 @@ class Category extends Model
         'status'
     ];
     protected $guarded;
+
+
+    public static function categoryBook($id){
+        return Book::where('category_id', $id)->take(3)->get();
+    }
 }

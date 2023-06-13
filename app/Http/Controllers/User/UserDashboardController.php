@@ -13,10 +13,11 @@ class UserDashboardController extends Controller
 {
     public function homePage()
     {
+        $homeCategories = Category::where('status', 2)->get();
         $categories = Category::all('id', 'name');
         $locations = Location::all('id', 'name');
         $books = Book::where('status',1)->get(['id', 'title', 'image', 'price']);
-        return view('welcome', compact('categories', 'locations', 'books'));
+        return view('welcome', compact('categories', 'locations', 'books', 'homeCategories'));
     }
 
     public function about(){
