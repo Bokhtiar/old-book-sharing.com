@@ -95,12 +95,7 @@
             <span class="mt-2"><i class="btn btn-sm btn-outline-success p-1 fas fa-list"></i> <i
                     class="btn btn-sm btn-outline-success p-1 far fa-list-alt"></i></span>
         </div>
-
-        {{-- books with category --}}
-        <div class="">
-
             {{-- book show --}}
-            <div class="">
                 <div class="row p-2">
                     @foreach ($books as $book)
                         <div class="col-sm-6 col-6 col-md-3 col-lg-3  my-4 rounded-lg zoom">
@@ -126,9 +121,43 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
-
-
-        </div>
     </section><!-- end of book-->
+
+
+    <div class="container my-5 zoom p-5 " style="background-color: #EBEDEF">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <h1 class="mb-3">Contact Us</h1>
+            <form>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="your-name" class="form-label">Your Name</label>
+                  <input name="name" type="text" class="form-control" id="your-name" name="your-name" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="your-email" class="form-label">Your Email</label>
+                  <input name="email" type="email" class="form-control" id="your-email" name="your-email" required>
+                </div>
+                <div class="col-md-12">
+                  <label for="your-subject" class="form-label">Your Subject</label>
+                  <input name="subject" type="text" class="form-control" id="your-subject" name="your-subject">
+                </div>
+                <div class="col-12">
+                  <label for="your-message" class="form-label">Your Message</label>
+                  <textarea class="message" class="form-control" id="your-message" name="your-message" rows="5" required></textarea>
+                </div>
+                <div class="col-12 text-center">
+                  
+                      <button type="submit" class="btn btn-dark  fw-bold" >Send</button>
+                    
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+
+
+
 @endsection
