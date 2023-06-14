@@ -16,7 +16,7 @@ class UserDashboardController extends Controller
         $homeCategories = Category::where('status', 2)->get();
         $categories = Category::where('status', 1)->get();
         $locations = Location::all('id', 'name');
-        $books = Book::where('status',1)->get(['id', 'title', 'image', 'price']);
+        $books = Book::where('status',1)->get(['id', 'title', 'image', 'price', 'author']);
         return view('welcome', compact('categories', 'locations', 'books', 'homeCategories'));
     }
 

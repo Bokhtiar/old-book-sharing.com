@@ -28,38 +28,40 @@
     </section><!-- end of slider-->
 
 
-
+    <style>
+        .zoom {
+          transition: transform .2s; /* Animation */
+        }
+        
+        .zoom:hover {
+          transform: scale(0.9); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+        </style>
     <section class="my-5 container">
-        <div class="card">
-            <div class="d-flex justify-content-between shadow-sm  px-4 py-2">
-                <h2>Our Category List</h2>
-                <span class="mt-2"><i class="btn btn-sm btn-outline-success p-1 fas fa-list"></i> <i
-                        class="btn btn-sm btn-outline-success p-1 far fa-list-alt"></i></span>
-            </div>
-            <div class="card-body">
-                <section class="row">
-                    @foreach ($categories as $category)
-                        <div class="col-sm-6 col-md-2 col-lg-2 my-2">
-                            <div class="card" style="width: 11rem;">
-                                <img class="" style="height: 140px" src="{{ $category->image }}" alt="Card image cap">
-                                <div class="card-body bg-success">
-                                    <a href="" class="text-white text-center"
-                                        style="text-decoration: none">{{ $category->name }}</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </section>
-            </div>
+         <!--books-->
+         <div class="d-flex justify-content-between shadow-sm  px-4 py-2">
+            <h2 class="text-muted">Categories</h2>
+            <span class="mt-2"><i class="btn btn-sm btn-outline-success p-1 fas fa-list"></i> <i
+                    class="btn btn-sm btn-outline-success p-1 far fa-list-alt"></i></span>
         </div>
+        <section class="row p-4">
+            @foreach ($categories as $cat)
+                <div class="col-sm-6 col-md-2 col-lg-2 my-2 text-center ml-2 zoom"
+                    style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+                    <img src="{{ asset($cat->image) }}" height="160px" width="100%" class="p-3" alt="">
+                    <div class="mb-2 text-muted"><a href="{{url('category', $cat->id)}}">{{ $cat->name }}</a></div>
+                </div>
+            @endforeach
+        </section>
     </section>
 
     <section class="  my-5 container">
         <div class="row">
             @foreach ($homeCategories as $item)
-                <div class="col-sm-12 col-md-4 col-lg-4 border border-2 py-2" style="margin:4px">
-                    <h2 class="text-center bg-success text-white py-3">{{ $item->name }}</h2>
-                    <div class="row mt-4">
+                <div class=" rounded col-sm-12 col-md-4 col-lg-4 border border-1" style="margin:4px">
+
+                    <div class="row">
+                        <h2 class="rounded text-center text-white py-3 " style="background-color: #85929E">{{ $item->name }}</h2>
                         @foreach (App\Models\Category::categoryBook($item->id) as $book)
                             {{-- book show start here --}}
                             <div class="col-md-2 col-lg-2 ">
@@ -101,7 +103,7 @@
             <div class="">
                 <div class="row p-2">
                     @foreach ($books as $book)
-                        <div class="col-sm-6 col-6 col-md-3 col-lg-3  my-4 rounded-lg">
+                        <div class="col-sm-6 col-6 col-md-3 col-lg-3  my-4 rounded-lg zoom">
                             <div class=" shadow p-3" style="width: 100%; margin-left:0px;">
                                 <a href="{{ url('book/detail', $book->id) }}">
                                     <img height="250px" width="100%" src="{{ asset($book->image) }}"
@@ -109,8 +111,16 @@
                                 </a>
                                 <div class="card-body d-flex justify-content-between pt-2">
                                     <p class="card-text text-capitalize h6"><a
-                                            href="{{ url('book/detail', $book->id) }}">{{ $book->title }}</a> </p>
+                                            href="{{ url('book/detail', $book->id) }}" style="text-decoration: none">{{ $book->title }}</a> </p>
                                     <span>{{ $book->price }}Tk</span>
+                                </div>
+                                <div class="text-center">
+                                    <span class="">{{$book->author}}</span><br>
+                                    <span><span class="fa fa-star" style="color: yellow; font-size:10px"></span>
+                                    <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
+                                    <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
+                                    <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
+                                    <span class="fa fa-star" style=" font-size:10px"></span></span>
                                 </div>
                             </div>
                         </div>
