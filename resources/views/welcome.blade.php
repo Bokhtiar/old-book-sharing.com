@@ -128,7 +128,8 @@
         <div class="row justify-content-center">
           <div class="col-lg-9">
             <h1 class="mb-3">Contact Us</h1>
-            <form>
+            <form action="{{ url('message') }}" method="POST">
+                @csrf
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="your-name" class="form-label">Your Name</label>
@@ -144,7 +145,7 @@
                 </div>
                 <div class="col-12">
                   <label for="your-message" class="form-label">Your Message</label>
-                  <textarea class="message" class="form-control" id="your-message" name="your-message" rows="5" required></textarea>
+                  <textarea name="message" class="form-control" id="your-message" name="your-message" rows="5" required></textarea>
                 </div>
                 <div class="col-12 text-center">
                   
