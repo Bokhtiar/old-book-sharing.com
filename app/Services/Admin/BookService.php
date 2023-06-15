@@ -39,6 +39,7 @@ class BookService
             'ISBN' => $request->ISBN,
             'category_id' => $request->category_id,
             'location_id' => $request->location_id,
+            'location' => $request->location,
             'title' => $request->title,
             'author' => $request->author,
             'user_id' => Auth::id(),

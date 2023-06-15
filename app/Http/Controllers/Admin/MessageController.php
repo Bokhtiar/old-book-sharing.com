@@ -33,6 +33,7 @@ class MessageController extends Controller
     /* specific resoruce destory */
     public function delete($id)
     {
+        dd($id);
         try {
             MessageService::findById($id)->delete();
             return back();

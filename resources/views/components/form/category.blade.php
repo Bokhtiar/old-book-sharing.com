@@ -23,7 +23,7 @@
         'placeholder' => '',
         'type' => 'file',
         'value' => @$edit ? @$edit->name : '',
-        'required' => true,
+        'required' => false,
     ])
     @endcomponent 
 

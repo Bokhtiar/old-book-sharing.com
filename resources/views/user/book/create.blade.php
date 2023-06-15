@@ -60,9 +60,20 @@
                             'name' => 'location_id',
                             'resource' => $locations,
                             'field_id' => 'id',
-                            'label' => 'Select category',
+                            'label' => 'Select Devision',
                             'field_name' => 'name',
                             'value' => @$edit ? @$edit->id : '',
+                        ])
+                        @endcomponent
+                    </div>
+
+                    {{-- location --}}
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        @component('components.input', [
+                            'label' => 'Your location',
+                            'name' => 'location',
+                            'placeholder' => 'type here your location',
+                            'value' => @$edit ? @$edit->location : '',
                         ])
                         @endcomponent
                     </div>

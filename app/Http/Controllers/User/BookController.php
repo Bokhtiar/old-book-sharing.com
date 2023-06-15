@@ -40,6 +40,7 @@ class BookController extends Controller
         $book['author'] = $request->author;
         $book['description'] = $request->description;
         $book['price'] = $request->price;
+        $book['location'] = $request->location;
 
         if($request->image){
 

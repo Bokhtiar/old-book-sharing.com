@@ -28,8 +28,8 @@ class BookController extends Controller
     {
         try {
             $locations = LocationService::findAll();
-            $categories = CategoryService::categoryList();
-            return view('admin.book.createOrUpdate', compact('categories', 'locations'));
+            $categoriesList = CategoryService::categoryList();
+            return view('admin.book.createOrUpdate', compact('categoriesList', 'locations'));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -50,10 +50,10 @@ class BookController extends Controller
     public function edit($id)
     {
         try {
-            $categories = CategoryService::categoryList();
+            $categoriesList = CategoryService::categoryList();
             $locations = LocationService::findAll();
             $edit = BookService::findById($id);
-            return view('admin.book.createOrUpdate', compact('edit', 'categories', 'locations'));
+            return view('admin.book.createOrUpdate', compact('edit', 'categoriesList', 'locations'));
         } catch (\Throwable $th) {
             throw $th;
         }

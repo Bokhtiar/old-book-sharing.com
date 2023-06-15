@@ -19,6 +19,6 @@ class Category extends Model
 
 
     public static function categoryBook($id){
-        return Book::where('category_id', $id)->take(3)->get();
+        return Book::where('category_id', $id)->get();
     }
 }

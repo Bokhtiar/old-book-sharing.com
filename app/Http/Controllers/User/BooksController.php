@@ -33,6 +33,7 @@ class BooksController extends Controller
         $book['ISBN'] = $request->ISBN;
         $book['category_id'] = $request->category_id;
         $book['location_id'] = $request->location_id;
+        $book['location'] = $request->location;
         $book['user_id'] = Auth::id();
         $book['role_id'] = Auth::user()->role_id;
         $book['title'] = $request->title;
@@ -64,7 +65,6 @@ class BooksController extends Controller
 
     public function store(Request $request)
     {
-
             $book = new Book;
             $this->save($book, $request);
             return redirect('user/book/index');

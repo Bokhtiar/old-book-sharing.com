@@ -10,7 +10,7 @@ class CategoryService
     /* find all resource */
     public static function categoryList()
     {
-        return Category::latest()->get(['id', 'name']);
+        return Category::latest()->get(['id', 'name', 'image', 'status']);
     }
 
     /* store resoruce documents */

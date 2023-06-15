@@ -13,8 +13,8 @@ class CategoryController extends Controller
     public function index()
     {
         try {
-            $categories = CategoryService::categoryList();
-            return view('admin.category.index', compact('categories'));
+            $categoriesList = CategoryService::categoryList();
+            return view('admin.category.index', compact('categoriesList'));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -25,8 +25,8 @@ class CategoryController extends Controller
     {
         try {
             CategoryService::categoryStore($request);
-            $categories = CategoryService::categoryList();
-            return view('admin.category.index', compact('categories'));
+            $categoriesList = CategoryService::categoryList();
+            return view('admin.category.index', compact('categoriesList'));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -39,8 +39,8 @@ class CategoryController extends Controller
     {
         try {
             $edit = CategoryService::categoryFindById($id);
-            $categories = CategoryService::categoryList();
-            return view('admin.category.index', compact('categories', 'edit'));
+            $categoriesList = CategoryService::categoryList();
+            return view('admin.category.index', compact('categoriesList', 'edit'));
         } catch (\Throwable $th) {
             throw $th;
         }

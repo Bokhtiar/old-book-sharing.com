@@ -173,25 +173,19 @@
     </style>
 
     {{-- about us start here --}}
-    <section class="about-section">
+    <section class="about-section" id="about">
         <div class="container">
             <div class="row">
                 <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
                     <div class="inner-column">
                         <div class="sec-title">
                             <span class="title text-success h5">About old book sharing</span>
-                            <h2>We are Creative Tech Enthusiast working since 2015</h2>
+                            <h2>Since 2020, we've been implementing old book sharing.</h2>
                         </div>
-                        <div class="text">I am Rahul Yaduvanshi works at Css3 Transition since last 3 years. We are here
-                            to provide touch notch solution for your website or web application that helps you to make your
-                            website look attractive & efficient in handling by creating usefull plugins thats you need.
+                        <div class="text">Since the past three years, I have worked at Old Book Sharing Transition as Imam Mehdi Hassan. We are here to provide top-notch solutions for your website or web application, assisting you in making your website appealing and manageable by providing the necessary plugins..
                         </div>
                         <div class="text">
-                            We are here to serve you next level tutorial that currently in trend to match you with your
-                            expertise. Css3 transition is a learning website. where you can find many good quality content
-                            related to web development and tutorials about plugins. here we are using html, html5, css,
-                            css3, jquery & javascript along with inspirational UI design layout by professionals by using
-                            Photoshop and adobe allustrator.
+                            A book description is a short summary of a book's story or content that is designed to “hook” a reader and lead to a sale. Typically, the book's description conveys important information about its topic or focus (in nonfiction) or the plot and tone (for a novel or any other piece of fiction)
                         </div>
                         <div class="btn-box">
                             <a href="#" class="btn btn-outline-success">Contact Us</a>
@@ -213,29 +207,11 @@
             </div>
             <div class="sec-title" style="margin-top: 60px">
                 <span class="title text-success h5" style="">Our Future Goal</span>
-                <h2>We want to lead in innovation & Technology</h2>
             </div>
             <div class="text">
-                We works on UI/UX and functionality as well so that a plugins comes with proper stucture & stunning looks
-                which suits to your web app & website.
+                Bookshare makes reading easier. People with dyslexia, blindness, cerebral palsy, and other reading barriers can customize their experience to suit their learning style and find virtually any book they need for school, work, or the joy of reading.
             </div>
-            <div class="text">
-                We take a small toolkit here and ride it well so that it is fit for your use. One who performs well and
-                looks even better.
-            </div>
-            <div class="text">
-                Here we are trying to give you all kinds of technical content, whether it is related to designing or
-                functionality. We are creating content on a lot of languages and will continue to make it free of cost even
-                if you use it without any problem. Which is a very important thing.
-            </div>
-            <div class="text">
-                Here you can also share the content you create, if our technical team likes it, then we will also share it
-                on our blog.
-            </div>
-            <div class="text">
-
-                In the end, I would say keep visiting our website and enjoy the quality content.
-            </div>
+         
         </div>
     </section>
     {{-- about us end here --}}
@@ -263,7 +239,7 @@
                 <div class="col-sm-6 col-md-2 col-lg-2 my-2 text-center ml-2 zoom"
                     style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
                     <img src="{{ asset($cat->image) }}" height="160px" width="100%" class="p-3" alt="">
-                    <div class="mb-2 text-muted"><a href="{{ url('category', $cat->id) }}">{{ $cat->name }}</a></div>
+                    <div class="mb-2 text-muted"><a style="text-decoration: none" href="{{ url('category', $cat->id) }}">{{ $cat->name }}</a></div>
                 </div>
             @endforeach
         </section>
@@ -272,7 +248,7 @@
     <section class="  my-5 container">
         <div class="row">
             @foreach ($homeCategories as $item)
-                <div class=" rounded col-sm-12 col-md-4 col-lg-4 border border-1" style="margin:4px">
+                <div class=" rounded col-sm-12 col-md-4 col-lg-4 border border-1" style="">
 
                     <div class="row">
                         <h2 class="rounded text-center text-white py-3 " style="background-color: #85929E">
@@ -284,7 +260,7 @@
                                     alt="">
                             </div>
                             <div class="col-md-10 col-lg-10">
-                                <span>{{ $book->title }}</span><br>
+                                <span> <a href="{{ url('book/detail', $book->id) }}" style="text-decoration: none">{{ $book->title }}</a> </span><br>
                                 <span>{{ $book->author }}</span><br>
                                 <span><span class="fa fa-star" style="color: yellow; font-size:10px"></span>
                                     <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
@@ -339,7 +315,7 @@
     </section><!-- end of book-->
 
 
-    <div class="container my-5 zoom p-5 " style="background-color: #EBEDEF">
+    <div class="container my-5 zoom p-5 " style="background-color: #EBEDEF" id="contact">
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <h1 class="mb-3">Contact Us</h1>
