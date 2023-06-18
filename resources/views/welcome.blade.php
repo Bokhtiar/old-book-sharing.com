@@ -325,6 +325,7 @@
             </div>
         </section>
     </section>
+    
     {{-- normale categoyr --}}
     <section class="my-5 container">
         <!--books-->

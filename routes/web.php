@@ -39,9 +39,8 @@ Route::group([ "as"=>'user.' , "prefix"=>'user' , "namespace"=>'User' , "middlew
     Route::get('order', [App\Http\Controllers\User\OrderController::class, 'index']);
     //logout
     Route::get('logout', [App\Http\Controllers\User\UserDashboardController::class, 'logout']);
-
 });
-
+ 
 /* ADMIN */
 Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "middleware"=>['auth','admin']],function(){
     Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
@@ -50,6 +49,9 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "middleware"=>['auth','admin
 
     /* location */
     Route::resource('/location', LocationController::class);
+
+    /* author */
+    Route::resource('/author', LocationController::class);
      
     /* book */
     Route::resource('/book', BookController::class);
