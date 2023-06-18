@@ -378,6 +378,30 @@
         </div>
     </section><!-- end of book-->
 
+    {{-- author --}}
+    <section class="my-5 container">
+        <div class=" bg-muted">
+            <div class="d-flex justify-content-between shadow  px-4 py-2">
+                <h2 class="text-muted">Weekly Popular Authors
+                </h2>
+                
+            </div>
+        <div class="card-body">
+    
+        <div class="row">
+            @foreach ($authors as $author)
+                @component('components.author', [
+                    'name' => $author->name,
+                    'image' => $author->image,
+                    'body' => $author->body,
+                ])
+                @endcomponent
+            @endforeach
+        </div>
+    </div>
+    </div>
+    </section>
+
     {{-- contact --}}
     <div class="container my-5 p-5 " style="background-color: #EBEDEF" id="contact">
         <div class="row justify-content-center">

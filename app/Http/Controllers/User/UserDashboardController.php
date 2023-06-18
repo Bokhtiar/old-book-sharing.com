@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Location;
+use App\Services\Admin\AuthorService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,12 +14,13 @@ class UserDashboardController extends Controller
 {
     public function homePage()
     { 
-        $homeCategories = Category::where('status', 'home')->get();
-        $normaleCategories = Category::where('status', 'normale')->get();
-        $examCategories = Category::where('status', 'exam')->get();
         $locations = Location::all('id', 'name');
+        $homeCategories = Category::where('status', 'home')->get();
+        $examCategories = Category::where('status', 'exam')->get();
+        $normaleCategories = Category::where('status', 'normale')->get();
+        $authors = AuthorService::findAll();
         $books = Book::where('status',1)->get(['id', 'title', 'image', 'price', 'author']);
-        return view('welcome', compact('normaleCategories', 'locations', 'books', 'homeCategories', 'examCategories'));
+        return view('welcome', compact('authors','normaleCategories', 'locations', 'books', 'homeCategories', 'examCategories'));
     }
 
     public function about(){
