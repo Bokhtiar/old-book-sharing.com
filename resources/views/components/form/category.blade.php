@@ -33,6 +33,7 @@
             <option value="normale">Normale category</option>
             <option value="home">Home category</option>
             <option value="exam">Exam category</option>
+            <option value="home2">home2</option>
         </select>
        
     </div>

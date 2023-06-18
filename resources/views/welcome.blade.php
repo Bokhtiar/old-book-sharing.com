@@ -376,7 +376,22 @@
                 @endcomponent
             @endforeach
         </div>
+        <div class="text-center">
+            <a class="px-5 py-2 rounded" style=" width: 30px; height:14px; background:#FA8072; color:white; border border-2;text-decoration: none; font-size:24px" href="{{ url('book') }}">See more</a>
+        </div>
+        
     </section><!-- end of book-->
+
+    <section class="my-5 container">
+        @foreach ($home2 as $item)
+        @component('components.category',[
+            'name' => $item->name,
+            'id' => $item->id,
+        ])
+        @endcomponent
+        @endforeach
+       
+    </section>
 
     {{-- author --}}
     <section class="my-5 container">
@@ -439,4 +454,57 @@
             </div>
         </div>
     </div>
+
+    <section class="my-5 container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 ">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 col-lg-4 border border-2 pt-2 rounded">
+                        <div class="d-flex">
+                            <span class="material-symbols-outlined mt-2">payments</span>
+                            &nbsp;
+                            &nbsp;
+                            <p class="">
+                              <span class="text-muted h6">CASH ON DELIVERY</span> <br>
+                              <span class="text-muted">Pay cash at door</span>  
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 col-lg-4 border border-2 pt-2 rounded">
+                        <div class="d-flex">
+                            <span class="material-symbols-outlined mt-2">
+                                local_shipping
+                                </span>
+                            &nbsp;
+                            &nbsp;
+                            <p class="">
+                              <span class="text-muted h6">DELIVERY</span> <br>
+                              <span class="text-muted">All over Bangladesh
+
+                              </span>  
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-4 col-lg-4 border border-2 pt-2 rounded">
+                        <div class="d-flex">
+                            <span class="material-symbols-outlined mt-2">assignment_return</span>
+                            &nbsp;
+                            &nbsp;
+                            <p class="">
+                              <span class="text-muted h6">HAPPY RETURN
+
+                              </span> <br>
+                              <span class="text-muted">7 days return facilit</span>  
+                            </p>
+                        </div>
+                    </div>
+
+                  
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

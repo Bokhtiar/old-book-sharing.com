@@ -14,13 +14,14 @@ class UserDashboardController extends Controller
 {
     public function homePage()
     { 
+        $authors = AuthorService::findAll();
         $locations = Location::all('id', 'name');
         $homeCategories = Category::where('status', 'home')->get();
         $examCategories = Category::where('status', 'exam')->get();
         $normaleCategories = Category::where('status', 'normale')->get();
-        $authors = AuthorService::findAll();
+        $home2 = Category::where('status', 'home2')->get();
         $books = Book::where('status',1)->get(['id', 'title', 'image', 'price', 'author']);
-        return view('welcome', compact('authors','normaleCategories', 'locations', 'books', 'homeCategories', 'examCategories'));
+        return view('welcome', compact('home2','authors','normaleCategories', 'locations', 'books', 'homeCategories', 'examCategories'));
     }
 
     public function about(){

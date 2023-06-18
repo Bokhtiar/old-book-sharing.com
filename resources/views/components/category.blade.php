@@ -1,0 +1,1 @@
+<a href="{{ url('category', $id) }}" class="btn btn-outline-success my-1">{{ $name }}</a>
