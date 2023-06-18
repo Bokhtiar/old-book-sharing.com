@@ -13,7 +13,7 @@ class BookController extends Controller
 {
     public function books()
     {
-        $books = Book::all(['title', 'id', 'image', 'location_id']);
+        $books = Book::all();
         return view('user.book.books', compact('books'));
     }
 

@@ -279,7 +279,7 @@
                             @foreach (App\Models\Category::categoryBook($item->id) as $book)
                                 <div class="card" style="width: 100%;">
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item " style="background-color: #EBEDEF">
+                                        <li class="list-group-item zoom" style="background-color: #F2F4F4">
                                             <div class="row">
                                                 <div class="col-md-2 col-lg-2 ">
                                                     <img class="mx-auto" height="64px" width="48px"
@@ -357,75 +357,21 @@
         </div>
         {{-- book show --}}
         <div class="row p-2">
-            <style>
-                .hide {
-                    display: none;
-                }
-
-                .myDIV:hover+.hide {
-                    display: block;
-                }
-
-                .myDIV:hover {
-                    background: #e5e7eb;
-                }
-            </style>
+        
             @foreach ($books as $book)
-                <div class="  col-sm-6 col-6 col-md-3 col-lg-3  my-4 rounded-lg">
-                    <div class=" myDIV shadow p-3" style="width: 100%; margin-left:0px; ">
-                        <a href="{{ url('book/detail', $book->id) }}">
-                            <img class="" height="250px" width="100%" src="{{ asset($book->image) }}" class="p-2"
-                                alt="...">
-                        </a>
-                        <div class="card-body d-flex justify-content-between pt-2">
-                            <p class="card-text text-capitalize h6"><a href="{{ url('book/detail', $book->id) }}"
-                                    style="text-decoration: none">{{ $book->title }}</a> </p>
-                            <span>{{ $book->price }}Tk</span>
-                        </div>
-                        <div class="text-center">
-                            <span class="">{{ $book->author }}</span><br>
-                            <span><span class="fa fa-star" style="color: yellow; font-size:10px"></span>
-                                <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
-                                <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
-                                <span class="fa fa-star" style="color: yellow; font-size:10px"></span>
-                                <span class="fa fa-star" style=" font-size:10px"></span></span>
-                        </div>
-                    </div>
-                    <div class=" text-center hide mx-auto px-4 pt-2"
-                        style=" 
-                       
-                        height:40px;
-                        width:150px;
-                        position: relative;
-                        top: -50%;
-                        
-                        left: 1px;
-                        color:white;
-                        text-decoration: none;
-                        border-radius: 5px;">
-
-                        <a class="text-white p-1 pt-3 px-2 rounded" href="{{ url('book/detail', $book->id) }}" style=" background:#FA8072"><span class="material-symbols-outlined">
-                            visibility
-                        </span></a>
-
-                        <a class="text-white p-1 pt-3 px-2 rounded" href="{{ url('user/cart',$book->id) }}" style=" background:#FA8072">
-                            <span class="material-symbols-outlined">
-                                shopping_cart
-                                </span>
-                        </a>
-                        
-                        
-                    </div>
-                </div>
+                @component('components.product',[
+                  'id' => $book->id,
+                  'title' => $book->name,
+                  'image' => $book->image,
+                  'price' => $book->price,
+                  'author' => $book->author,
+                ])
+                @endcomponent
             @endforeach
         </div>
     </section><!-- end of book-->
 
-
-
-
-
-
+    {{-- contact --}}
     <div class="container my-5 p-5 " style="background-color: #EBEDEF" id="contact">
         <div class="row justify-content-center">
             <div class="col-lg-9">
@@ -462,21 +408,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        <!-- Support Me 🙏🥰 
-        -->
-        kofiWidgetOverlay.draw('mohamedghulam',
-        {
-        'type':
-        'floating-chat',
-        'floating-chat.donateButton.text':
-        'Support
-        me ',
-        'floating-chat.donateButton.background-color':
-        '#323842',
-        'floating-chat.donateButton.text-color':
-        '#fff'
-        });
-    </script>
 @endsection
