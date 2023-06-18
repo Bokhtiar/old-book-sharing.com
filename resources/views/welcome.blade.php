@@ -256,11 +256,11 @@
                     <div class=" px-2 mb-2  py-3 rounded d-flex justify-content-between" style="background:#FA8072"><a
                             style="text-decoration: none; color:white;"
                             href="{{ url('category', $cat->id) }}">{{ $cat->name }}</a>
-                            
-                            <span class="material-symbols-outlined text-white">
-                                arrow_forward_ios
-                                </span>
-                        </div>
+
+                        <span class="material-symbols-outlined text-white">
+                            arrow_forward_ios
+                        </span>
+                    </div>
                 </div>
             @endforeach
         </section>
@@ -306,12 +306,12 @@
 
                                     </ul>
                                 </div>
-                                
                             @endforeach
                             <div class="text-center my-2">
-                                <a class="btn btn-outline-success text-center" href="{{ url('category', $item->id) }}">View All</a>
+                                <a class="btn btn-outline-success text-center"
+                                    href="{{ url('category', $item->id) }}">View All</a>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -326,9 +326,9 @@
     {{-- normale categoyr --}}
     <section class="my-5 container">
         <!--books-->
-        <div class="d-flex justify-content-between shadow-sm  px-4 py-2 rounded text-white" style="background-color: #F08080">
+        <div class="d-flex justify-content-between shadow-sm  px-4 py-2 rounded text-muted" style="">
             <h2 class="">Categories</h2>
-            <span class="mt-2"><i class="btn btn-sm btn-outline-success p-1 fas fa-list" style="background-color: #F08080"></i> <i
+            <span class="mt-2"><i class="btn btn-sm btn-outline-success p-1 fas fa-list" style=""></i> <i
                     class="btn btn-sm btn-outline-success p-1 far fa-list-alt"></i></span>
         </div>
         <section class="row p-4">
@@ -336,19 +336,17 @@
                 <div class="col-sm-6 col-md-2 col-lg-2 my-2 text-center ml-2 zoom"
                     style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
                     <img src="{{ asset($cat->image) }}" height="160px" width="100%" class="p-3" alt="">
-                    <div class="mb-2  d-flex justify-content-between "><a style="text-transform: capitalize;text-decoration: none; font-size:18px;  font-weight: bold; color:#FA8072"
+                    <div class="mb-2  d-flex justify-content-between "><a
+                            style="text-transform: capitalize;text-decoration: none; font-size:18px;  font-weight: bold; color:#FA8072"
                             href="{{ url('category', $cat->id) }}">{{ $cat->name }}</a>
-                            <span class="material-symbols-outlined mt-1" style="color: #FA8072; font-size:18px;">
-                                arrow_forward_ios
-                                </span>
-                        </div>
+                        <span class="material-symbols-outlined mt-1" style="color: #FA8072; font-size:18px;">
+                            arrow_forward_ios
+                        </span>
+                    </div>
                 </div>
             @endforeach
         </section>
     </section>
-
-
-
 
     <section class="my-5 container">
         <!--books-->
@@ -359,11 +357,24 @@
         </div>
         {{-- book show --}}
         <div class="row p-2">
+            <style>
+                .hide {
+                    display: none;
+                }
+
+                .myDIV:hover+.hide {
+                    display: block;
+                }
+
+                .myDIV:hover {
+                    background: #e5e7eb;
+                }
+            </style>
             @foreach ($books as $book)
-                <div class="col-sm-6 col-6 col-md-3 col-lg-3  my-4 rounded-lg zoom">
-                    <div class=" shadow p-3" style="width: 100%; margin-left:0px;">
+                <div class="  col-sm-6 col-6 col-md-3 col-lg-3  my-4 rounded-lg">
+                    <div class=" myDIV shadow p-3" style="width: 100%; margin-left:0px; ">
                         <a href="{{ url('book/detail', $book->id) }}">
-                            <img height="250px" width="100%" src="{{ asset($book->image) }}" class="card-img-top p-2"
+                            <img class="" height="250px" width="100%" src="{{ asset($book->image) }}" class="p-2"
                                 alt="...">
                         </a>
                         <div class="card-body d-flex justify-content-between pt-2">
@@ -380,13 +391,42 @@
                                 <span class="fa fa-star" style=" font-size:10px"></span></span>
                         </div>
                     </div>
+                    <div class=" text-center hide mx-auto px-4 pt-2"
+                        style=" 
+                       
+                        height:40px;
+                        width:150px;
+                        position: relative;
+                        top: -50%;
+                        
+                        left: 1px;
+                        color:white;
+                        text-decoration: none;
+                        border-radius: 5px;">
+
+                        <a class="text-white p-1 pt-3 px-2 rounded" href="{{ url('book/detail', $book->id) }}" style=" background:#FA8072"><span class="material-symbols-outlined">
+                            visibility
+                        </span></a>
+
+                        <a class="text-white p-1 pt-3 px-2 rounded" href="{{ url('user/cart',$book->id) }}" style=" background:#FA8072">
+                            <span class="material-symbols-outlined">
+                                shopping_cart
+                                </span>
+                        </a>
+                        
+                        
+                    </div>
                 </div>
             @endforeach
         </div>
     </section><!-- end of book-->
 
 
-    <div class="container my-5 zoom p-5 " style="background-color: #EBEDEF" id="contact">
+
+
+
+
+    <div class="container my-5 p-5 " style="background-color: #EBEDEF" id="contact">
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <h1 class="mb-3">Contact Us</h1>
@@ -422,4 +462,21 @@
             </div>
         </div>
     </div>
+
+    <script>
+        <!-- Support Me 🙏🥰 
+        -->
+        kofiWidgetOverlay.draw('mohamedghulam',
+        {
+        'type':
+        'floating-chat',
+        'floating-chat.donateButton.text':
+        'Support
+        me ',
+        'floating-chat.donateButton.background-color':
+        '#323842',
+        'floating-chat.donateButton.text-color':
+        '#fff'
+        });
+    </script>
 @endsection
