@@ -34,7 +34,7 @@ class BookController extends Controller
             throw $th;
         }
     }
-
+ 
     /* create new resoruce store */
     public function store(BookRequest $request)
     {

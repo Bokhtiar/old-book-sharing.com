@@ -20,10 +20,25 @@
                         </li>
                     </ul>
                 </li>
+
+                <li>
+                    <a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Author <span
+                            class="sidebar-collapse-icon ti-angle-down"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="@route('admin.author.index')">All Authors</a>
+                        </li>
+                        <li>
+                            <a href="@route('admin.author.create')">Author create</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li><a href="@route('admin.location.index')"><i class="ti-calendar"></i> Locations </a></li>
                 <li><a href="@route('admin.book.index')"><i class="ti-calendar"></i> Books </a></li>
                 <li><a href="@route('admin.book.create')"><i class="ti-calendar"></i> Book create </a></li>
-                <li><a href="@route('admin.author.index')"><i class="ti-calendar"></i> Author </a></li>
+                
                 
                 <li><a href="@route('admin.user-post')"><i class="ti-user"></i> User Pending Post</a></li>
                 <li><a href="{{ url('admin/order/orders') }}"><i class="ti-layout-grid2-alt"></i> Order List</a></li>

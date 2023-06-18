@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthorController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BookController;
@@ -51,7 +52,7 @@ Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "middleware"=>['auth','admin
     Route::resource('/location', LocationController::class);
 
     /* author */
-    Route::resource('/author', LocationController::class);
+    Route::resource('/author', AuthorController::class);
      
     /* book */
     Route::resource('/book', BookController::class);
