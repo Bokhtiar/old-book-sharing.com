@@ -30,7 +30,7 @@
     <div class="form-group my-2">
         <label for="">Placement</label>
         <select name="status" class="form-control" id="">
-            <option value="normle">Normale category</option>
+            <option value="normale">Normale category</option>
             <option value="home">Home category</option>
             <option value="exam">Exam category</option>
         </select>
