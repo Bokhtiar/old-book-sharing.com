@@ -9,7 +9,7 @@
       </tr>
   </thead>
   <tbody>
-      @forelse ($categories as $item)
+      @forelse ($categoriesList as $item)
           <tr>
               <th scope="row">{{ $loop->index }}</th>
               <td>{{ $item->name }}</td>

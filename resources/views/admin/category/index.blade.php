@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-body">
                     @component('components.table.category', [
-                        'categories' => @$categories,
+                        'categoriesList' => @$categoriesList,
                     ])
                     @endcomponent
                 </div>

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class UserDashboardController extends Controller
 {
     public function homePage()
-    {
+    { 
         $homeCategories = Category::where('status', 2)->get();
         $categories = Category::where('status', 1)->get();
         $locations = Location::all('id', 'name');

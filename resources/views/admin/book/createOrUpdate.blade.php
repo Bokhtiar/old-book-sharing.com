@@ -3,7 +3,7 @@
 
     {{-- book create update form --}}
     @component('components.form.book', [
-        'categories' => @$categories,
+        'categoriesList' => @$categoriesList,
         'edit' => @$edit,
     ])
     @endcomponent

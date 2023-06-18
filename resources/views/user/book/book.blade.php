@@ -28,6 +28,7 @@
             <div class="my-5">
                 <span class="">Category : {{ $book->category->name }}</span><br><br>
                 <span class="">Author : {{ $book->author }} </span><br><br>
+                <span class="">Location : {{ $book->location }} </span><br><br>
                 <span>Description: {{ $book->description }}</span>
             </div>
         </div>
