@@ -40,48 +40,40 @@ class AuthorController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Display the specified resource. */
     public function show($id)
-    {
-        //
-    }
+    {}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Show the form for editing the specified resource. */
     public function edit($id)
     {
-        //
+        try {
+            $edit = AuthorService::findById($id);
+            return view('admin.author.createUpdate',compact('edit'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Update the specified resource in storage. */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            AuthorService::update($id,$request);
+            return redirect()->route('admin.author.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    /* Remove the specified resource from storage. */
     public function destroy($id)
     {
-        //
+        try {
+            AuthorService::findById($id)->delete();
+            return redirect()->route('admin.author.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

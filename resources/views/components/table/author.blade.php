@@ -24,10 +24,6 @@
                                 edit_square
                             </span></a>
 
-                        {{-- view --}}
-                        <a href="@route('admin.author.show', $author->id)" class="btn btn-sm btn-success mr-2"><span class="material-symbols-outlined">
-                            visibility
-                            </span></a>
                         {{-- delete --}}
                         <form action="@route('admin.author.destroy', $author->id)" method="POST">
                             @csrf

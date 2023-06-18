@@ -8,7 +8,7 @@
     <div class="card">
         <div class="card-body">
             @component('components.form.author', [
-                'edit' => @$authors,
+                'edit' => @$edit,
             ])
             @endcomponent
         </div>
