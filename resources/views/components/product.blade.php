@@ -12,7 +12,7 @@
     }
 </style>
 
-<div class="  col-sm-6 col-6 col-md-3 col-lg-3  my-4 rounded-lg zoom">
+<div class="col-sm-6 col-6 col-md-3 col-lg-3     my-4 rounded-lg zoom">
     <div class=" myDIV shadow p-3" style="width: 100%; margin-left:0px; ">
         <a href="{{ url('book/detail', $id) }}">
             <img class="" height="250px" width="100%" src="{{ asset($image) }}" class="p-2"

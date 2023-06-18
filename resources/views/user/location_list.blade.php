@@ -32,6 +32,7 @@
                   'image' => $book->image,
                   'price' => $book->price,
                   'author' => $book->author,
+                  'col' => 4, 
                 ])
                 @endcomponent
             @empty

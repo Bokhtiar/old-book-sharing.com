@@ -243,108 +243,114 @@
     {{-- exam category --}}
     <section class="my-5 container">
         <!--books-->
-        <div class="d-flex justify-content-between shadow-sm  px-4 py-2">
+        <div class="d-flex justify-content-between shadow  px-4 py-2">
             <h2 class="text-muted">Browse By Exam Book </h2>
             <span class="mt-2"><i class="btn btn-sm btn-outline-success p-1 fas fa-list"></i> <i
                     class="btn btn-sm btn-outline-success p-1 far fa-list-alt"></i></span>
         </div>
-        <section class="row p-4">
-            @foreach ($examCategories as $cat)
-                <div class="col-sm-6 col-md-2 col-lg-2 my-2 text-center ml-2 zoom"
-                    style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
-                    <img src="{{ asset($cat->image) }}" height="160px" width="100%" class="p-3" alt="">
-                    <div class=" px-2 mb-2  py-3 rounded d-flex justify-content-between" style="background:#FA8072"><a
-                            style="text-decoration: none; color:white;"
-                            href="{{ url('category', $cat->id) }}">{{ $cat->name }}</a>
+        <section class="shadow">
+            <section class="row p-4 px-4 py-3  my-3">
+                @foreach ($examCategories as $cat)
+                    <div class="col-sm-6 col-md-2 col-lg-2 my-2 text-center ml-2 zoom"
+                        style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+                        <img src="{{ asset($cat->image) }}" height="160px" width="100%" class="p-3" alt="">
+                        <div class=" px-2 mb-2  py-3 rounded d-flex justify-content-between" style="background:#FA8072"><a
+                                style="text-decoration: none; color:white;"
+                                href="{{ url('category', $cat->id) }}">{{ $cat->name }}</a>
 
-                        <span class="material-symbols-outlined text-white">
-                            arrow_forward_ios
-                        </span>
+                            <span class="material-symbols-outlined text-white">
+                                arrow_forward_ios
+                            </span>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </section>
         </section>
     </section>
 
     {{-- home category --}}
-    <section class="  my-5 container">
-        <div class="row">
-            @foreach ($homeCategories as $item)
-                <div class=" rounded col-sm-12 col-md-4 col-lg-4 border border-1" style="">
+    <section class="px-4">
+        <section class="my-5 container px-4 py-3 shadow py-3">
+            <div class="row">
+                @foreach ($homeCategories as $item)
+                    <div class=" rounded col-sm-12 col-md-4 col-lg-4 border border-1" style="">
+                        <div class="row ">
+                            <h2 class="rounded text-center text-white py-3 " style="background-color: #FA8072">
+                                {{ $item->name }}</h2>
+                            <div class="overflow-auto" style="height: 300px">
+                                @foreach (App\Models\Category::categoryBook($item->id) as $book)
+                                    <div class="card" style="width: 100%;">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item zoom" style="background-color: #F2F4F4">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-lg-2 ">
+                                                        <img class="mx-auto" height="64px" width="48px"
+                                                            src="{{ asset($book->image) }}" alt="">
+                                                    </div>
+                                                    <div class="col-md-10 col-lg-10">
+                                                        <span> <a href="{{ url('book/detail', $book->id) }}"
+                                                                style="text-decoration: none">{{ $book->title }}</a>
+                                                        </span><br>
+                                                        <span>{{ $book->author }}</span><br>
+                                                        <span><span class="fa fa-star"
+                                                                style="color: yellow; font-size:10px"></span>
+                                                            <span class="fa fa-star"
+                                                                style="color: yellow; font-size:10px"></span>
+                                                            <span class="fa fa-star"
+                                                                style="color: yellow; font-size:10px"></span>
+                                                            <span class="fa fa-star"
+                                                                style="color: yellow; font-size:10px"></span>
+                                                            <span class="fa fa-star"
+                                                                style=" font-size:10px"></span></span>
+                                                    </div>
 
-                    <div class="row ">
-                        <h2 class="rounded text-center text-white py-3 " style="background-color: #FA8072">
-                            {{ $item->name }}</h2>
-                        <div class="overflow-auto" style="height: 300px">
-                            @foreach (App\Models\Category::categoryBook($item->id) as $book)
-                                <div class="card" style="width: 100%;">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item zoom" style="background-color: #F2F4F4">
-                                            <div class="row">
-                                                <div class="col-md-2 col-lg-2 ">
-                                                    <img class="mx-auto" height="64px" width="48px"
-                                                        src="{{ asset($book->image) }}" alt="">
                                                 </div>
-                                                <div class="col-md-10 col-lg-10">
-                                                    <span> <a href="{{ url('book/detail', $book->id) }}"
-                                                            style="text-decoration: none">{{ $book->title }}</a>
-                                                    </span><br>
-                                                    <span>{{ $book->author }}</span><br>
-                                                    <span><span class="fa fa-star"
-                                                            style="color: yellow; font-size:10px"></span>
-                                                        <span class="fa fa-star"
-                                                            style="color: yellow; font-size:10px"></span>
-                                                        <span class="fa fa-star"
-                                                            style="color: yellow; font-size:10px"></span>
-                                                        <span class="fa fa-star"
-                                                            style="color: yellow; font-size:10px"></span>
-                                                        <span class="fa fa-star" style=" font-size:10px"></span></span>
-                                                </div>
+                                            </li>
 
-                                            </div>
-                                        </li>
-
-                                    </ul>
+                                        </ul>
+                                    </div>
+                                @endforeach
+                                <div class="text-center my-2">
+                                    <a class="btn btn-outline-success text-center"
+                                        href="{{ url('category', $item->id) }}">View All</a>
                                 </div>
-                            @endforeach
-                            <div class="text-center my-2">
-                                <a class="btn btn-outline-success text-center"
-                                    href="{{ url('category', $item->id) }}">View All</a>
+
                             </div>
-
                         </div>
+
+
+
                     </div>
-
-
-
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
+        </section>
     </section>
-
-
     {{-- normale categoyr --}}
     <section class="my-5 container">
         <!--books-->
-        <div class="d-flex justify-content-between shadow-sm  px-4 py-2 rounded text-muted" style="">
+        <div class="d-flex justify-content-between shadow  px-4 py-2 rounded text-muted" style="">
             <h2 class="">Categories</h2>
             <span class="mt-2"><i class="btn btn-sm btn-outline-success p-1 fas fa-list" style=""></i> <i
                     class="btn btn-sm btn-outline-success p-1 far fa-list-alt"></i></span>
         </div>
-        <section class="row p-4">
-            @foreach ($normaleCategories as $cat)
-                <div class="col-sm-6 col-md-2 col-lg-2 my-2 text-center ml-2 zoom"
-                    style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
-                    <img src="{{ asset($cat->image) }}" height="160px" width="100%" class="p-3" alt="">
-                    <div class="mb-2  d-flex justify-content-between "><a
-                            style="text-transform: capitalize;text-decoration: none; font-size:18px;  font-weight: bold; color:#FA8072"
-                            href="{{ url('category', $cat->id) }}">{{ $cat->name }}</a>
-                        <span class="material-symbols-outlined mt-1" style="color: #FA8072; font-size:18px;">
-                            arrow_forward_ios
-                        </span>
+        <section class="shadow">
+
+            <section class="row px-4 py-3 px-5 my-3">
+                @foreach ($normaleCategories as $cat)
+                    <div class="col-sm-6 col-md-2 col-lg-2 my-2 text-center ml-2 zoom"
+                        style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+                        <img src="{{ asset($cat->image) }}" height="160px" width="100%" class="p-3"
+                            alt="">
+                        <div class="mb-2  d-flex justify-content-between "><a
+                                style="text-transform: capitalize;text-decoration: none; font-size:18px;  font-weight: bold; color:#FA8072"
+                                href="{{ url('category', $cat->id) }}">{{ $cat->name }}</a>
+                            <span class="material-symbols-outlined mt-1" style="color: #FA8072; font-size:18px;">
+                                arrow_forward_ios
+                            </span>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </section>
         </section>
     </section>
 
@@ -357,14 +363,14 @@
         </div>
         {{-- book show --}}
         <div class="row p-2">
-        
+
             @foreach ($books as $book)
-                @component('components.product',[
-                  'id' => $book->id,
-                  'title' => $book->name,
-                  'image' => $book->image,
-                  'price' => $book->price,
-                  'author' => $book->author,
+                @component('components.product', [
+                    'id' => $book->id,
+                    'title' => $book->title,
+                    'image' => $book->image,
+                    'price' => $book->price,
+                    'author' => $book->author,
                 ])
                 @endcomponent
             @endforeach

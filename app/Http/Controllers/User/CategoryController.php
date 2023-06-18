@@ -14,8 +14,8 @@ class CategoryController extends Controller
     {
         try {
             $books = Book::where('status',1)->get();
-            $categories = Category::all();
-            return view('user.category_list',compact('books', 'categories'));
+            $categoriesList = Category::all();
+            return view('user.category_list',compact('books', 'categoriesList'));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -25,6 +25,7 @@ class CategoryController extends Controller
         $books = Book::where('category_id', $id)->where('status',1)->get();
         $b = Category::where('id', $id)->first();
         $category_name = $b->name;
-        return view('user.category',compact('books', 'category_name'));
+        $categoryList = Category::all();
+        return view('user.category',compact('books', 'category_name', 'categoryList'));
     }
 }
