@@ -22,7 +22,7 @@
             <h5 class="text-success">{{ $book->price }} TK</h5>
             <h6 class="">ISBN : {{ $book->ISBN }}</h6>
             <div  style="" class="my-5">
-                <a style="background-color:#2e86de" class="btn btn-sm text-light" href="{{ url('user/cart',$book->id) }}">Add To Card</a>
+                <a style="background-color:#2e86de" class="btn btn-sm text-light" href="{{ url('user/cart',$book->id) }}">Add To Cart</a>
             </div>
 
             <div class="my-5">

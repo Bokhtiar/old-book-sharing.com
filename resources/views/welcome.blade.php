@@ -1,17 +1,29 @@
 @extends('layouts.user.app')
 @section('content')
+<section class=" container">
+        @foreach ($home2 as $item)
+        @component('components.category',[
+            'name' => $item->name,
+            'id' => $item->id,
+        ])
+        @endcomponent
+        @endforeach
+       
+    </section>
+    
+
     <section>
         <!--start of slider-->
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('frontend/image/4.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('frontend/slider2.avif') }}" height="600px" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('frontend/image/8.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('frontend/slider1.avif') }}" height="600px" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('frontend/image/7.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('frontend/image/7.jpg') }}" height="600px" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -27,6 +39,8 @@
         </div>
     </section><!-- end of slider-->
 
+
+    
     <style>
         .about-section {
             position: relative;
@@ -382,16 +396,7 @@
         
     </section><!-- end of book-->
 
-    <section class="my-5 container">
-        @foreach ($home2 as $item)
-        @component('components.category',[
-            'name' => $item->name,
-            'id' => $item->id,
-        ])
-        @endcomponent
-        @endforeach
-       
-    </section>
+    
 
     {{-- author --}}
     <section class="my-5 container">
