@@ -139,7 +139,7 @@
             left: -3px;
             background: transparent;
             z-index: 0;
-            border: 44px solid #FA8072;
+            border: 44px solid skyBlue;
         }
 
         .about-section .image-column .image-1 {
@@ -268,7 +268,7 @@
                     <div class="col-sm-6 col-md-2 col-lg-2 my-2 text-center ml-2 zoom"
                         style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
                         <img src="{{ asset($cat->image) }}" height="160px" width="100%" class="p-3" alt="">
-                        <div class=" px-2 mb-2  py-3 rounded d-flex justify-content-between" style="background:#FA8072"><a
+                        <div class=" px-2 mb-2  py-3 rounded d-flex justify-content-between" style="background:skyBlue"><a
                                 style="text-decoration: none; color:white;"
                                 href="{{ url('category', $cat->id) }}">{{ $cat->name }}</a>
 
@@ -289,7 +289,7 @@
                 @foreach ($homeCategories as $item)
                     <div class=" rounded col-sm-12 col-md-4 col-lg-4 border border-1" style="">
                         <div class="row ">
-                            <h2 class="rounded text-center text-white py-3 " style="background-color: #FA8072">
+                            <h2 class="rounded text-center text-white py-3 " style="background-color: skyBlue">
                                 {{ $item->name }}</h2>
                             <div class="overflow-auto" style="height: 300px">
                                 @foreach (App\Models\Category::categoryBook($item->id) as $book)
@@ -357,9 +357,9 @@
                         <img src="{{ asset($cat->image) }}" height="160px" width="100%" class="p-3"
                             alt="">
                         <div class="mb-2  d-flex justify-content-between "><a
-                                style="text-transform: capitalize;text-decoration: none; font-size:18px;  font-weight: bold; color:#FA8072"
+                                style="text-transform: capitalize;text-decoration: none; font-size:18px;  font-weight: bold; color:skyBlue"
                                 href="{{ url('category', $cat->id) }}">{{ $cat->name }}</a>
-                            <span class="material-symbols-outlined mt-1" style="color: #FA8072; font-size:18px;">
+                            <span class="material-symbols-outlined mt-1" style="color: skyBlue; font-size:18px;">
                                 arrow_forward_ios
                             </span>
                         </div>
@@ -391,7 +391,7 @@
             @endforeach
         </div>
         <div class="text-center">
-            <a class="px-5 py-2 rounded" style=" width: 30px; height:14px; background:#FA8072; color:white; border border-2;text-decoration: none; font-size:24px" href="{{ url('book') }}">See more</a>
+            <a class="px-5 py-2 rounded" style=" width: 30px; height:14px; background:skyBlue; color:white; border border-2;text-decoration: none; font-size:24px" href="{{ url('book') }}">See more</a>
         </div>
         
     </section><!-- end of book-->

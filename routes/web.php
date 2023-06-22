@@ -45,6 +45,7 @@ Route::group([ "as"=>'user.' , "prefix"=>'user' , "namespace"=>'User' , "middlew
 /* ADMIN */
 Route::group([ "as"=>'admin.' , "prefix"=>'admin' , "middleware"=>['auth','admin']],function(){
     Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/user', [App\Http\Controllers\Admin\AdminDashboardController::class, 'users'])->name('user');
     /* category */
     Route::resource('/category', CategoryController::class);
 
