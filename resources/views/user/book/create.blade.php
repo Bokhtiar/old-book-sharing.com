@@ -11,7 +11,7 @@
 
     <section class=" container">
         <div class="card p-4">
-
+ 
 
             <form action="{{ url('user/book/store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -37,7 +37,7 @@
                             'value' => @$edit ? @$edit->price : '',
                         ])
                         @endcomponent
-                    </div>
+                    </div> 
 
                     {{-- Category --}}
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">

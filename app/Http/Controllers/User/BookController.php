@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Http\Controllers\User;
@@ -20,7 +19,7 @@ class BookController extends Controller
     public function detail($id)
     {
         $book = Book::find($id);
-        $books = Book::where('category_id', $book->category_id)->where('status',1)->get();
+        $books = Book::where('category_id', $book->category_id)->get();
         return view('user.book.book', compact('book', 'books'));
     }
 
